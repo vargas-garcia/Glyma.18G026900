@@ -1,0 +1,406 @@
+Year,Location,Environment,Block,Plot,RIL Family,Line,QTL_Allele,Type,Condition,Researcher,Yield
+2019,Wooster,2019_Wooster,2,1503,4060,4060_26,OX,Exp,Non-disease,Chris,1216.168773
+2019,Wooster,2019_Wooster,1,902,3064,3064_14,PI 106,Exp,Non-disease,Chris,1318.041398
+2019,Wooster,2019_Wooster,2,2203,3064,3064_32,PI 106,Exp,Non-disease,Chris,1329.746459
+2019,Wooster,2019_Wooster,2,2402,3064,3064_36,OX,Exp,Non-disease,Chris,1362.674985
+2019,Wooster,2019_Wooster,1,904,3064,3064_25,OX,Exp,Non-disease,Chris,1425.187732
+2019,Wooster,2019_Wooster,2,2301,3064,3064_25,OX,Exp,Non-disease,Chris,1447.05433
+2019,Wooster,2019_Wooster,2,2303,3064,3064_50,PI 106,Exp,Non-disease,Chris,1644.368228
+2019,Wooster,2019_Wooster,2,2401,3064,3064_28,OX,Exp,Non-disease,Chris,1663.147777
+2019,Wooster,2019_Wooster,1,704,3064,3064_24,PI 106,Exp,Non-disease,Chris,1665.977572
+2019,Wooster,2019_Wooster,2,2403,3064,3064_27,OX,Exp,Non-disease,Chris,1669.193249
+2019,Wooster,2019_Wooster,2,2205,3064,3064_3,PI 106,Exp,Non-disease,Chris,1787.272882
+2019,Wooster,2019_Wooster,2,2405,3064,3064_39,OX,Exp,Non-disease,Chris,1799.878333
+2019,Wooster,2019_Wooster,2,2305,3064,3064_14,PI 106,Exp,Non-disease,Chris,1822.25944
+2019,Wooster,2019_Wooster,2,2204,3064,3064_24,PI 106,Exp,Non-disease,Chris,1846.955834
+2019,Wooster,2019_Wooster,2,2404,3064,3064_7,PI 106,Exp,Non-disease,Chris,1959.118623
+2019,Wooster,2019_Wooster,1,804,3064,3064_3,PI 106,Exp,Non-disease,Chris,1962.334299
+2019,Wooster,2019_Wooster,2,2201,3064,3064_2,PI 106,Exp,Non-disease,Chris,1976.483275
+2019,Wooster,2019_Wooster,2,2003,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1994.362435
+2019,Wooster,2019_Wooster,1,1002,4060,4060_26,OX,Exp,Non-disease,Chris,2126.462417
+2019,Wooster,2019_Wooster,2,2202,3064,3064_19,OX,Exp,Non-disease,Chris,2229.235431
+2019,Wooster,2019_Wooster,1,702,3064,3064_36,OX,Exp,Non-disease,Chris,2255.346723
+2019,Wooster,2019_Wooster,1,805,3064,3064_19,OX,Exp,Non-disease,Chris,2269.367071
+2019,Wooster,2019_Wooster,1,1201,4060,4060_30,PI 105B,Exp,Non-disease,Chris,2318.373978
+2019,Wooster,2019_Wooster,1,703,3064,3064_32,PI 106,Exp,Non-disease,Chris,2350.14486
+2019,Wooster,2019_Wooster,1,705,3064,3064_50,PI 106,Exp,Non-disease,Chris,2362.750311
+2019,Wooster,2019_Wooster,1,1005,4060,4060_48,OX,Exp,Non-disease,Chris,2368.152647
+2019,Wooster,2019_Wooster,1,903,3064,3064_39,OX,Exp,Non-disease,Chris,2401.59568
+2019,Wooster,2019_Wooster,2,2103,4213,4213_14,OX,Exp,Non-disease,Chris,2417.159554
+2019,Wooster,2019_Wooster,2,1902,4213,4213_40,PI 105B,Exp,Non-disease,Chris,2433.237935
+2019,Wooster,2019_Wooster,2,1604,4213,4213_41,OX,Exp,Non-disease,Chris,2480.444063
+2019,Wooster,2019_Wooster,2,1703,4213,4213_18,PI 105B,Exp,Non-disease,Chris,2510.028285
+2019,Wooster,2019_Wooster,1,1001,4060,4060_42,OX,Exp,Non-disease,Chris,2513.629842
+2019,Wooster,2019_Wooster,2,2002,4213,4213_28,OX,Exp,Non-disease,Chris,2541.284658
+2019,Wooster,2019_Wooster,1,901,3064,3064_28,OX,Exp,Non-disease,Chris,2571.897897
+2019,Wooster,2019_Wooster,2,1701,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2630.294578
+2019,Wooster,2019_Wooster,2,1501,4060,4060_6,OX,Exp,Non-disease,Chris,2633.381627
+2019,Wooster,2019_Wooster,1,905,3064,3064_7,PI 106,Exp,Non-disease,Chris,2695.508493
+2019,Wooster,2019_Wooster,1,502,4213,4213_32,PI 105B,Exp,Non-disease,Chris,2728.565645
+2019,Wooster,2019_Wooster,2,1901,4213,4213_32,PI 105B,Exp,Non-disease,Chris,2762.137306
+2019,Wooster,2019_Wooster,1,802,3064,3064_2,PI 106,Exp,Non-disease,Chris,2771.269827
+2019,Wooster,2019_Wooster,1,1003,4060,4060_7,OX,Exp,Non-disease,Chris,2773.713741
+2019,Wooster,2019_Wooster,1,1104,4060,4060_40,PI 105B,Exp,Non-disease,Chris,2783.360769
+2019,Wooster,2019_Wooster,2,1403,4060,4060_30,PI 105B,Exp,Non-disease,Chris,2816.289295
+2019,Wooster,2019_Wooster,2,1405,4060,4060_24,OX,Exp,Non-disease,Chris,2821.048496
+2019,Wooster,2019_Wooster,1,205,4213,4213_14,OX,Exp,Non-disease,Chris,2826.579459
+2019,Wooster,2019_Wooster,1,303,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2833.782574
+2019,Wooster,2019_Wooster,2,1404,4060,4060_44,OX,Exp,Non-disease,Chris,2873.399706
+2019,Wooster,2019_Wooster,1,1102,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2878.287534
+2019,Wooster,2019_Wooster,1,405,4213,4213_37,PI 105B,Exp,Non-disease,Chris,2903.369809
+2019,Wooster,2019_Wooster,2,1904,4213,4213_56,OX,Exp,Non-disease,Chris,2917.518784
+2019,Wooster,2019_Wooster,2,1705,4213,4213_20,PI 105B,Exp,Non-disease,Chris,2920.219952
+2019,Wooster,2019_Wooster,1,701,3064,3064_27,OX,Exp,Non-disease,Chris,2932.95403
+2019,Wooster,2019_Wooster,2,1303,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2953.92024
+2019,Wooster,2019_Wooster,2,1402,4060,4060_35,PI 105B,Exp,Non-disease,Chris,2961.123355
+2019,Wooster,2019_Wooster,1,1105,4060,4060_35,PI 105B,Exp,Non-disease,Chris,3016.30436
+2019,Wooster,2019_Wooster,2,1704,4213,4213_31,PI 105B,Exp,Non-disease,Chris,3060.680693
+2019,Wooster,2019_Wooster,1,504,4213,4213_40,PI 105B,Exp,Non-disease,Chris,3061.581082
+2019,Wooster,2019_Wooster,1,105,4213,4213_17,PI 105B,Exp,Non-disease,Chris,3077.016328
+2019,Wooster,2019_Wooster,1,201,4213,4213_11,PI 105B,Exp,Non-disease,Chris,3083.704935
+2019,Wooster,2019_Wooster,2,2001,4213,4213_17,PI 105B,Exp,Non-disease,Chris,3086.277476
+2019,Wooster,2019_Wooster,2,2105,4213,4213_21,OX,Exp,Non-disease,Chris,3087.435119
+2019,Wooster,2019_Wooster,2,2101,4213,4213_11,PI 105B,Exp,Non-disease,Chris,3090.650796
+2019,Wooster,2019_Wooster,1,1205,4060,4060_24,OX,Exp,Non-disease,Chris,3162.939199
+2019,Wooster,2019_Wooster,2,2104,4213,4213_37,PI 105B,Exp,Non-disease,Chris,3162.939199
+2019,Wooster,2019_Wooster,2,1304,4060,4060_42,OX,Exp,Non-disease,Chris,3169.499178
+2019,Wooster,2019_Wooster,2,1602,4213,4213_46,OX,Exp,Non-disease,Chris,3171.17133
+2019,Wooster,2019_Wooster,1,605,4213,4213_29,PI 105B,Exp,Non-disease,Chris,3181.718748
+2019,Wooster,2019_Wooster,2,1804,4213,4213_49,PI 105B,Exp,Non-disease,Chris,3235.999364
+2019,Wooster,2019_Wooster,2,1805,4213,4213_45,OX,Exp,Non-disease,Chris,3268.542008
+2019,Wooster,2019_Wooster,2,1302,4060,4060_48,OX,Exp,Non-disease,Chris,3278.189037
+2019,Wooster,2019_Wooster,2,2102,4213,4213_8,OX,Exp,Non-disease,Chris,3298.640738
+2019,Wooster,2019_Wooster,1,505,4213,4213_20,PI 105B,Exp,Non-disease,Chris,3302.242296
+2019,Wooster,2019_Wooster,2,1702,4213,4213_29,PI 105B,Exp,Non-disease,Chris,3307.258751
+2019,Wooster,2019_Wooster,1,304,4213,4213_31,PI 105B,Exp,Non-disease,Chris,3310.603054
+2019,Wooster,2019_Wooster,1,301,4213,4213_49,PI 105B,Exp,Non-disease,Chris,3319.606948
+2019,Wooster,2019_Wooster,1,302,4213,4213_18,PI 105B,Exp,Non-disease,Chris,3360.51035
+2019,Wooster,2019_Wooster,1,1204,4060,4060_43,PI 105B,Exp,Non-disease,Chris,3382.119695
+2019,Wooster,2019_Wooster,1,404,4213,4213_8,OX,Exp,Non-disease,Chris,3382.248322
+2019,Wooster,2019_Wooster,2,1401,4060,4060_43,PI 105B,Exp,Non-disease,Chris,3384.692236
+2019,Wooster,2019_Wooster,1,1103,4060,4060_44,OX,Exp,Non-disease,Chris,3392.924367
+2019,Wooster,2019_Wooster,1,203,4213,4213_28,OX,Exp,Non-disease,Chris,3394.08201
+2019,Wooster,2019_Wooster,1,503,4213,4213_2,PI 105B,Exp,Non-disease,Chris,3414.019203
+2019,Wooster,2019_Wooster,1,501,4213,4213_21,OX,Exp,Non-disease,Chris,3453.121827
+2019,Wooster,2019_Wooster,1,101,4213,4213_56,OX,Exp,Non-disease,Chris,3509.974984
+2019,Wooster,2019_Wooster,2,1504,4060,4060_40,PI 105B,Exp,Non-disease,Chris,3539.945087
+2019,Wooster,2019_Wooster,1,602,4213,4213_46,OX,Exp,Non-disease,Chris,3540.845476
+2019,Wooster,2019_Wooster,1,104,4213,4213_30,PI 105B,Exp,Non-disease,Chris,3560.396788
+2019,Wooster,2019_Wooster,2,1502,4060,4060_36,PI 105B,Exp,Non-disease,Chris,3579.819473
+2019,Wooster,2019_Wooster,2,1801,4213,4213_47,OX,Exp,Non-disease,Chris,3580.076727
+2019,Wooster,2019_Wooster,2,1905,4213,4213_1,OX,Exp,Non-disease,Chris,3585.221809
+2019,Wooster,2019_Wooster,2,1301,4060,4060_7,OX,Exp,Non-disease,Chris,3586.765334
+2019,Wooster,2019_Wooster,2,1603,4213,4213_9,OX,Exp,Non-disease,Chris,3587.151215
+2019,Wooster,2019_Wooster,1,403,4213,4213_10,OX,Exp,Non-disease,Chris,3599.113531
+2019,Wooster,2019_Wooster,1,601,4213,4213_45,OX,Exp,Non-disease,Chris,3602.843715
+2019,Wooster,2019_Wooster,1,1101,4060,4060_6,OX,Exp,Non-disease,Chris,3651.207487
+2019,Wooster,2019_Wooster,2,2005,4213,4213_2,PI 105B,Exp,Non-disease,Chris,3718.993943
+2019,Wooster,2019_Wooster,1,103,4213,4213_41,OX,Exp,Non-disease,Chris,3756.938923
+2019,Wooster,2019_Wooster,2,1601,4213,4213_10,OX,Exp,Non-disease,Chris,3757.324804
+2019,Wooster,2019_Wooster,1,1202,4060,4060_14,PI 105B,Exp,Non-disease,Chris,3801.829764
+2019,Wooster,2019_Wooster,1,402,4213,4213_1,OX,Exp,Non-disease,Chris,3924.15409
+2019,Wooster,2019_Wooster,1,401,4213,4213_9,OX,Exp,Non-disease,Chris,3956.825361
+2019,Wooster,2019_Wooster,1,102,4213,4213_47,OX,Exp,Non-disease,Chris,4205.97596
+2020,Wooster,2020_Wooster,2,1604,4213,4213_11,PI 105B,Exp,Non-disease,Chris,247.1068575
+2020,Wooster,2020_Wooster,2,1605,4213,4213_14,OX,Exp,Non-disease,Chris,258.1782288
+2020,Wooster,2020_Wooster,1,1203,4213,4213_9,OX,Exp,Non-disease,Chris,321.2235378
+2020,Wooster,2020_Wooster,1,1205,4213,4213_1,OX,Exp,Non-disease,Chris,356.1291114
+2020,Wooster,2020_Wooster,2,1905,4213,4213_28,OX,Exp,Non-disease,Chris,382.5773873
+2020,Wooster,2020_Wooster,2,1505,3064,3064_39,OX,Exp,Non-disease,Chris,520.661991
+2020,Wooster,2020_Wooster,2,1705,4213,4213_18,PI 105B,Exp,Non-disease,Chris,532.9635147
+2020,Wooster,2020_Wooster,1,1103,4213,4213_45,OX,Exp,Non-disease,Chris,562.6409406
+2020,Wooster,2020_Wooster,1,703,4213,4213_40,PI 105B,Exp,Non-disease,Chris,581.0932262
+2020,Wooster,2020_Wooster,2,1504,3064,3064_28,OX,Exp,Non-disease,Chris,585.0912214
+2020,Wooster,2020_Wooster,1,701,4213,4213_10,OX,Exp,Non-disease,Chris,619.6892568
+2020,Wooster,2020_Wooster,1,803,4213,4213_29,PI 105B,Exp,Non-disease,Chris,623.2259449
+2020,Wooster,2020_Wooster,1,201,4060,4060_6,OX,Exp,Non-disease,Chris,676.583804
+2020,Wooster,2020_Wooster,2,1405,3064,3064_27,OX,Exp,Non-disease,Chris,727.7888964
+2020,Wooster,2020_Wooster,1,903,4213,4213_8,OX,Exp,Non-disease,Chris,774.8422246
+2020,Wooster,2020_Wooster,1,1003,4213,4213_14,OX,Exp,Non-disease,Chris,832.659386
+2020,Wooster,2020_Wooster,1,902,4213,4213_49,PI 105B,Exp,Non-disease,Chris,931.0715757
+2020,Wooster,2020_Wooster,2,1303,3064,3064_3,PI 106,Exp,Non-disease,Chris,975.5108301
+2020,Wooster,2020_Wooster,2,1404,3064,3064_50,PI 106,Exp,Non-disease,Chris,1092.067767
+2020,Wooster,2020_Wooster,1,802,4213,4213_21,OX,Exp,Non-disease,Chris,1098.833605
+2020,Wooster,2020_Wooster,2,1403,3064,3064_19,OX,Exp,Non-disease,Chris,1152.191464
+2020,Wooster,2020_Wooster,1,1105,4213,4213_46,OX,Exp,Non-disease,Chris,1222.310149
+2020,Wooster,2020_Wooster,2,1704,4213,4213_47,OX,Exp,Non-disease,Chris,1261.521256
+2020,Wooster,2020_Wooster,1,503,3064,3064_32,PI 106,Exp,Non-disease,Chris,1332.870094
+2020,Wooster,2020_Wooster,2,1503,3064,3064_36,OX,Exp,Non-disease,Chris,1343.633927
+2020,Wooster,2020_Wooster,2,1603,4213,4213_21,OX,Exp,Non-disease,Chris,1391.60987
+2020,Wooster,2020_Wooster,1,1002,4213,4213_33,PI 105B,Exp,Non-disease,Chris,1444.198883
+2020,Wooster,2020_Wooster,2,2001,4213,4213_10,OX,Exp,Non-disease,Chris,1485.408988
+2020,Wooster,2020_Wooster,1,102,4060,4060_26,OX,Exp,Non-disease,Chris,1485.870295
+2020,Wooster,2020_Wooster,1,204,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1488.945676
+2020,Wooster,2020_Wooster,1,203,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1532.154778
+2020,Wooster,2020_Wooster,2,2301,4060,4060_6,OX,Exp,Non-disease,Chris,1547.224144
+2020,Wooster,2020_Wooster,1,702,4213,4213_47,OX,Exp,Non-disease,Chris,1565.215123
+2020,Wooster,2020_Wooster,2,1304,3064,3064_24,PI 106,Exp,Non-disease,Chris,1617.650368
+2020,Wooster,2020_Wooster,1,603,3064,3064_14,PI 106,Exp,Non-disease,Chris,1636.56396
+2020,Wooster,2020_Wooster,2,1802,4213,4213_40,PI 105B,Exp,Non-disease,Chris,1734.361074
+2020,Wooster,2020_Wooster,2,2401,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1750.353055
+2020,Wooster,2020_Wooster,2,1804,4213,4213_37,PI 105B,Exp,Non-disease,Chris,1750.353055
+2020,Wooster,2020_Wooster,2,2005,4213,4213_9,OX,Exp,Non-disease,Chris,1757.118893
+2020,Wooster,2020_Wooster,2,2205,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1781.72194
+2020,Wooster,2020_Wooster,2,2403,4060,4060_40,PI 105B,Exp,Non-disease,Chris,1782.490785
+2020,Wooster,2020_Wooster,2,1903,4213,4213_49,PI 105B,Exp,Non-disease,Chris,1810.169214
+2020,Wooster,2020_Wooster,1,504,3064,3064_7,PI 106,Exp,Non-disease,Chris,1813.552133
+2020,Wooster,2020_Wooster,1,1202,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1815.243592
+2020,Wooster,2020_Wooster,1,401,3064,3064_50,PI 106,Exp,Non-disease,Chris,1828.929037
+2020,Wooster,2020_Wooster,2,1302,3064,3064_2,PI 106,Exp,Non-disease,Chris,1833.849647
+2020,Wooster,2020_Wooster,1,501,3064,3064_2,PI 106,Exp,Non-disease,Chris,1843.690866
+2020,Wooster,2020_Wooster,1,302,4060,4060_42,OX,Exp,Non-disease,Chris,1862.29692
+2020,Wooster,2020_Wooster,2,2002,4213,4213_29,PI 105B,Exp,Non-disease,Chris,1876.443673
+2020,Wooster,2020_Wooster,1,105,4060,4060_48,OX,Exp,Non-disease,Chris,1880.749206
+2020,Wooster,2020_Wooster,2,1801,4213,4213_8,OX,Exp,Non-disease,Chris,1911.810553
+2020,Wooster,2020_Wooster,1,704,4213,4213_37,PI 105B,Exp,Non-disease,Chris,1916.269856
+2020,Wooster,2020_Wooster,1,1005,4213,4213_56,OX,Exp,Non-disease,Chris,1925.034691
+2020,Wooster,2020_Wooster,2,2003,4213,4213_32,PI 105B,Exp,Non-disease,Chris,1926.87992
+2020,Wooster,2020_Wooster,2,2305,4060,4060_36,PI 105B,Exp,Non-disease,Chris,1941.487979
+2020,Wooster,2020_Wooster,2,2203,4060,4060_26,OX,Exp,Non-disease,Chris,1948.561355
+2020,Wooster,2020_Wooster,2,2104,4213,4213_20,PI 105B,Exp,Non-disease,Chris,1955.94227
+2020,Wooster,2020_Wooster,1,502,3064,3064_28,OX,Exp,Non-disease,Chris,1965.322181
+2020,Wooster,2020_Wooster,2,1701,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1975.624708
+2020,Wooster,2020_Wooster,2,1501,3064,3064_14,PI 106,Exp,Non-disease,Chris,1981.467931
+2020,Wooster,2020_Wooster,2,1601,4213,4213_56,OX,Exp,Non-disease,Chris,1988.848846
+2020,Wooster,2020_Wooster,2,1301,3064,3064_25,OX,Exp,Non-disease,Chris,2020.525269
+2020,Wooster,2020_Wooster,1,404,3064,3064_39,OX,Exp,Non-disease,Chris,2026.368493
+2020,Wooster,2020_Wooster,1,505,3064,3064_36,OX,Exp,Non-disease,Chris,2034.056945
+2020,Wooster,2020_Wooster,1,402,3064,3064_19,OX,Exp,Non-disease,Chris,2040.515245
+2020,Wooster,2020_Wooster,2,2303,4060,4060_7,OX,Exp,Non-disease,Chris,2058.044916
+2020,Wooster,2020_Wooster,1,705,4213,4213_18,PI 105B,Exp,Non-disease,Chris,2068.039904
+2020,Wooster,2020_Wooster,1,904,4213,4213_2,PI 105B,Exp,Non-disease,Chris,2075.113281
+2020,Wooster,2020_Wooster,1,602,3064,3064_27,OX,Exp,Non-disease,Chris,2083.724347
+2020,Wooster,2020_Wooster,2,1401,3064,3064_7,PI 106,Exp,Non-disease,Chris,2130.931444
+2020,Wooster,2020_Wooster,1,1104,4213,4213_32,PI 105B,Exp,Non-disease,Chris,2163.83802
+2020,Wooster,2020_Wooster,1,202,4060,4060_7,OX,Exp,Non-disease,Chris,2205.355663
+2020,Wooster,2020_Wooster,1,604,3064,3064_24,PI 106,Exp,Non-disease,Chris,2218.887339
+2020,Wooster,2020_Wooster,1,103,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2227.037098
+2020,Wooster,2020_Wooster,1,605,3064,3064_3,PI 106,Exp,Non-disease,Chris,2234.725551
+2020,Wooster,2020_Wooster,2,2004,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2270.707508
+2020,Wooster,2020_Wooster,2,1901,4213,4213_45,OX,Exp,Non-disease,Chris,2285.315567
+2020,Wooster,2020_Wooster,2,2105,4213,4213_2,PI 105B,Exp,Non-disease,Chris,2312.071381
+2020,Wooster,2020_Wooster,2,1502,3064,3064_32,PI 106,Exp,Non-disease,Chris,2330.984974
+2020,Wooster,2020_Wooster,2,1602,4213,4213_31,PI 105B,Exp,Non-disease,Chris,2341.902576
+2020,Wooster,2020_Wooster,1,405,3064,3064_25,OX,Exp,Non-disease,Chris,2365.736778
+2020,Wooster,2020_Wooster,1,805,4213,4213_28,OX,Exp,Non-disease,Chris,2366.966931
+2020,Wooster,2020_Wooster,1,301,4060,4060_24,OX,Exp,Non-disease,Chris,2383.11268
+2020,Wooster,2020_Wooster,1,804,4213,4213_11,PI 105B,Exp,Non-disease,Chris,2384.342833
+2020,Wooster,2020_Wooster,2,2102,4213,4213_41,OX,Exp,Non-disease,Chris,2388.955904
+2020,Wooster,2020_Wooster,2,2202,4060,4060_24,OX,Exp,Non-disease,Chris,2442.313763
+2020,Wooster,2020_Wooster,1,1001,4213,4213_41,OX,Exp,Non-disease,Chris,2453.231366
+2020,Wooster,2020_Wooster,1,304,4060,4060_44,OX,Exp,Non-disease,Chris,2491.519858
+2020,Wooster,2020_Wooster,2,1902,4213,4213_1,OX,Exp,Non-disease,Chris,2685.883933
+2020,Wooster,2020_Wooster,2,2304,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2775.838825
+2020,Wooster,2020_Wooster,1,305,4060,4060_35,PI 105B,Exp,Non-disease,Chris,2800.288103
+2020,Wooster,2020_Wooster,2,2101,4213,4213_46,OX,Exp,Non-disease,Chris,2816.433853
+2020,Wooster,2020_Wooster,2,2204,4060,4060_44,OX,Exp,Non-disease,Chris,2880.863083
+2020,Wooster,2020_Wooster,1,205,4060,4060_40,PI 105B,Exp,Non-disease,Chris,2934.836019
+2020,Wooster,2020_Wooster,1,104,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2935.758633
+2020,Wooster,2020_Wooster,2,2302,4060,4060_35,PI 105B,Exp,Non-disease,Chris,3105.827198
+2020,Wooster,2020_Wooster,2,1803,4213,4213_17,PI 105B,Exp,Non-disease,Chris,3206.238386
+2020,Wooster,2020_Wooster,1,901,4213,4213_17,PI 105B,Exp,Non-disease,Chris,3268.976157
+2020,Wooster,2020_Wooster,1,1101,4213,4213_31,PI 105B,Exp,Non-disease,Chris,3466.876919
+2020,Wooster,2020_Wooster,2,2405,4060,4060_42,OX,Exp,Non-disease,Chris,3545.452902
+2020,Wooster,2020_Wooster,2,2404,4060,4060_48,OX,Exp,Non-disease,Chris,3633.716334
+2020,Wooster,2020_Wooster,1,1201,4213,4213_20,PI 105B,Exp,Non-disease,Chris,4803.745008
+2021,WE_South Charleston,2021_E_South_Char,2,1304,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2857.238885
+2021,WE_South Charleston,2021_E_South_Char,2,1701,3064,3064_39,OX,Exp,Non-disease,Chris,2700.798643
+2021,WE_South Charleston,2021_E_South_Char,1,904,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2515.931538
+2021,WE_South Charleston,2021_E_South_Char,2,2301,4213,4213_17,PI 105B,Exp,Non-disease,Chris,2510.99846
+2021,WE_South Charleston,2021_E_South_Char,2,2205,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2403.087374
+2021,WE_South Charleston,2021_E_South_Char,1,1101,3064,3064_39,OX,Exp,Non-disease,Chris,2290.674855
+2021,WE_South Charleston,2021_E_South_Char,2,1405,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2244.920555
+2021,WE_South Charleston,2021_E_South_Char,1,501,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2178.262336
+2021,WE_South Charleston,2021_E_South_Char,1,704,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2173.699239
+2021,WE_South Charleston,2021_E_South_Char,1,103,4213,4213_18,PI 105B,Exp,Non-disease,Chris,2070.227924
+2021,WE_South Charleston,2021_E_South_Char,1,201,4213,4213_17,PI 105B,Exp,Non-disease,Chris,1977.856035
+2021,WE_South Charleston,2021_E_South_Char,2,1501,4060,4060_44,OX,Exp,Non-disease,Chris,1966.818272
+2021,WE_South Charleston,2021_E_South_Char,2,2101,4213,4213_49,PI 105B,Exp,Non-disease,Chris,1867.29342
+2021,WE_South Charleston,2021_E_South_Char,1,902,4060,4060_44,OX,Exp,Non-disease,Chris,1830.480324
+2021,WE_South Charleston,2021_E_South_Char,1,104,4213,4213_9,OX,Exp,Non-disease,Chris,1654.369433
+2021,WE_South Charleston,2021_E_South_Char,2,1601,3064,3064_3,PI 106,Exp,Non-disease,Chris,1649.436355
+2021,WE_South Charleston,2021_E_South_Char,1,1003,3064,3064_28,OX,Exp,Non-disease,Chris,1644.503277
+2021,WE_South Charleston,2021_E_South_Char,2,1901,4213,4213_29,PI 105B,Exp,Non-disease,Chris,1627.792474
+2021,WE_South Charleston,2021_E_South_Char,2,2405,4213,4213_18,PI 105B,Exp,Non-disease,Chris,1603.867045
+2021,WE_South Charleston,2021_E_South_Char,2,1603,3064,3064_27,OX,Exp,Non-disease,Chris,1599.365611
+2021,WE_South Charleston,2021_E_South_Char,2,1801,3064,3064_14,PI 106,Exp,Non-disease,Chris,1584.566377
+2021,WE_South Charleston,2021_E_South_Char,2,1902,4213,4213_47,OX,Exp,Non-disease,Chris,1582.778136
+2021,WE_South Charleston,2021_E_South_Char,1,601,4213,4213_45,OX,Exp,Non-disease,Chris,1576.11848
+2021,WE_South Charleston,2021_E_South_Char,2,1903,4213,4213_10,OX,Exp,Non-disease,Chris,1551.761407
+2021,WE_South Charleston,2021_E_South_Char,2,2202,4213,4213_8,OX,Exp,Non-disease,Chris,1549.911502
+2021,WE_South Charleston,2021_E_South_Char,2,1803,3064,3064_32,PI 106,Exp,Non-disease,Chris,1549.849839
+2021,WE_South Charleston,2021_E_South_Char,1,602,4213,4213_11,PI 105B,Exp,Non-disease,Chris,1539.367048
+2021,WE_South Charleston,2021_E_South_Char,2,1702,3064,3064_28,OX,Exp,Non-disease,Chris,1487.014755
+2021,WE_South Charleston,2021_E_South_Char,2,2102,4213,4213_2,PI 105B,Exp,Non-disease,Chris,1465.740856
+2021,WE_South Charleston,2021_E_South_Char,1,505,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1452.421545
+2021,WE_South Charleston,2021_E_South_Char,1,903,4060,4060_24,OX,Exp,Non-disease,Chris,1450.20166
+2021,WE_South Charleston,2021_E_South_Char,2,1703,3064,3064_2,PI 106,Exp,Non-disease,Chris,1437.43732
+2021,WE_South Charleston,2021_E_South_Char,2,1905,4213,4213_28,OX,Exp,Non-disease,Chris,1410.30539
+2021,WE_South Charleston,2021_E_South_Char,2,2002,4213,4213_46,OX,Exp,Non-disease,Chris,1407.160552
+2021,WE_South Charleston,2021_E_South_Char,2,1805,3064,3064_36,OX,Exp,Non-disease,Chris,1387.859884
+2021,WE_South Charleston,2021_E_South_Char,1,702,4060,4060_42,OX,Exp,Non-disease,Chris,1377.007112
+2021,WE_South Charleston,2021_E_South_Char,2,2003,4213,4213_45,OX,Exp,Non-disease,Chris,1376.698795
+2021,WE_South Charleston,2021_E_South_Char,1,1105,3064,3064_32,PI 106,Exp,Non-disease,Chris,1374.910554
+2021,WE_South Charleston,2021_E_South_Char,2,1802,3064,3064_19,OX,Exp,Non-disease,Chris,1366.15434
+2021,WE_South Charleston,2021_E_South_Char,1,605,4213,4213_56,OX,Exp,Non-disease,Chris,1357.274799
+2021,WE_South Charleston,2021_E_South_Char,2,2204,4213,4213_20,PI 105B,Exp,Non-disease,Chris,1346.483691
+2021,WE_South Charleston,2021_E_South_Char,1,1201,3064,3064_14,PI 106,Exp,Non-disease,Chris,1338.220785
+2021,WE_South Charleston,2021_E_South_Char,1,1102,3064,3064_36,OX,Exp,Non-disease,Chris,1331.561129
+2021,WE_South Charleston,2021_E_South_Char,2,2105,4213,4213_9,OX,Exp,Non-disease,Chris,1330.451187
+2021,WE_South Charleston,2021_E_South_Char,1,1103,3064,3064_24,PI 106,Exp,Non-disease,Chris,1329.217917
+2021,WE_South Charleston,2021_E_South_Char,2,1804,3064,3064_25,OX,Exp,Non-disease,Chris,1316.761895
+2021,WE_South Charleston,2021_E_South_Char,1,1203,3064,3064_50,PI 106,Exp,Non-disease,Chris,1313.30874
+2021,WE_South Charleston,2021_E_South_Char,1,204,4213,4213_49,PI 105B,Exp,Non-disease,Chris,1309.115623
+2021,WE_South Charleston,2021_E_South_Char,2,1404,4060,4060_48,OX,Exp,Non-disease,Chris,1290.863234
+2021,WE_South Charleston,2021_E_South_Char,1,203,4213,4213_2,PI 105B,Exp,Non-disease,Chris,1279.763808
+2021,WE_South Charleston,2021_E_South_Char,2,1705,3064,3064_50,PI 106,Exp,Non-disease,Chris,1262.436371
+2021,WE_South Charleston,2021_E_South_Char,1,905,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1261.141438
+2021,WE_South Charleston,2021_E_South_Char,2,2201,4213,4213_37,PI 105B,Exp,Non-disease,Chris,1260.771457
+2021,WE_South Charleston,2021_E_South_Char,2,1402,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1253.186849
+2021,WE_South Charleston,2021_E_South_Char,2,2401,4213,4213_21,OX,Exp,Non-disease,Chris,1250.288666
+2021,WE_South Charleston,2021_E_South_Char,2,1303,4060,4060_6,OX,Exp,Non-disease,Chris,1241.285798
+2021,WE_South Charleston,2021_E_South_Char,1,503,4213,4213_31,PI 105B,Exp,Non-disease,Chris,1227.719833
+2021,WE_South Charleston,2021_E_South_Char,2,2304,4213,4213_31,PI 105B,Exp,Non-disease,Chris,1215.263811
+2021,WE_South Charleston,2021_E_South_Char,2,2305,4213,4213_56,OX,Exp,Non-disease,Chris,1207.555876
+2021,WE_South Charleston,2021_E_South_Char,1,502,4213,4213_21,OX,Exp,Non-disease,Chris,1207.185895
+2021,WE_South Charleston,2021_E_South_Char,2,2402,4213,4213_40,PI 105B,Exp,Non-disease,Chris,1206.322607
+2021,WE_South Charleston,2021_E_South_Char,2,1302,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1179.437331
+2021,WE_South Charleston,2021_E_South_Char,2,1401,4060,4060_40,PI 105B,Exp,Non-disease,Chris,1175.860849
+2021,WE_South Charleston,2021_E_South_Char,1,801,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1167.844597
+2021,WE_South Charleston,2021_E_South_Char,1,1204,3064,3064_25,OX,Exp,Non-disease,Chris,1164.88475
+2021,WE_South Charleston,2021_E_South_Char,1,701,4060,4060_6,OX,Exp,Non-disease,Chris,1163.65148
+2021,WE_South Charleston,2021_E_South_Char,2,1605,3064,3064_7,PI 106,Exp,Non-disease,Chris,1156.066873
+2021,WE_South Charleston,2021_E_South_Char,2,2302,4213,4213_14,OX,Exp,Non-disease,Chris,1155.511901
+2021,WE_South Charleston,2021_E_South_Char,2,1503,4060,4060_26,OX,Exp,Non-disease,Chris,1153.415343
+2021,WE_South Charleston,2021_E_South_Char,1,404,4213,4213_40,PI 105B,Exp,Non-disease,Chris,1152.552055
+2021,WE_South Charleston,2021_E_South_Char,1,101,4213,4213_1,OX,Exp,Non-disease,Chris,1144.412476
+2021,WE_South Charleston,2021_E_South_Char,2,2203,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1133.374713
+2021,WE_South Charleston,2021_E_South_Char,1,102,4213,4213_46,OX,Exp,Non-disease,Chris,1117.280545
+2021,WE_South Charleston,2021_E_South_Char,2,1704,3064,3064_24,PI 106,Exp,Non-disease,Chris,1110.004255
+2021,WE_South Charleston,2021_E_South_Char,1,1002,3064,3064_27,OX,Exp,Non-disease,Chris,1094.156741
+2021,WE_South Charleston,2021_E_South_Char,1,1004,3064,3064_7,PI 106,Exp,Non-disease,Chris,1088.853682
+2021,WE_South Charleston,2021_E_South_Char,1,1205,3064,3064_2,PI 106,Exp,Non-disease,Chris,1087.188769
+2021,WE_South Charleston,2021_E_South_Char,1,302,4213,4213_29,PI 105B,Exp,Non-disease,Chris,1086.202153
+2021,WE_South Charleston,2021_E_South_Char,1,403,4213,4213_14,OX,Exp,Non-disease,Chris,1059.686858
+2021,WE_South Charleston,2021_E_South_Char,1,805,4060,4060_48,OX,Exp,Non-disease,Chris,1045.195941
+2021,WE_South Charleston,2021_E_South_Char,1,1202,3064,3064_3,PI 106,Exp,Non-disease,Chris,1026.38858
+2021,WE_South Charleston,2021_E_South_Char,2,2005,4213,4213_11,PI 105B,Exp,Non-disease,Chris,1006.039632
+2021,WE_South Charleston,2021_E_South_Char,2,2403,4213,4213_32,PI 105B,Exp,Non-disease,Chris,992.9669752
+2021,WE_South Charleston,2021_E_South_Char,2,1504,4060,4060_42,OX,Exp,Non-disease,Chris,982.5458475
+2021,WE_South Charleston,2021_E_South_Char,1,105,4213,4213_37,PI 105B,Exp,Non-disease,Chris,937.5315091
+2021,WE_South Charleston,2021_E_South_Char,1,301,4213,4213_8,OX,Exp,Non-disease,Chris,903.2466157
+2021,WE_South Charleston,2021_E_South_Char,1,401,4213,4213_47,OX,Exp,Non-disease,Chris,878.087917
+2021,WE_South Charleston,2021_E_South_Char,2,1505,4060,4060_7,OX,Exp,Non-disease,Chris,871.7365788
+2021,WE_South Charleston,2021_E_South_Char,1,901,4060,4060_35,PI 105B,Exp,Non-disease,Chris,867.1734815
+2021,WE_South Charleston,2021_E_South_Char,2,1403,4060,4060_35,PI 105B,Exp,Non-disease,Chris,864.7069424
+2021,WE_South Charleston,2021_E_South_Char,2,2404,4213,4213_41,OX,Exp,Non-disease,Chris,836.7117237
+2021,WE_South Charleston,2021_E_South_Char,1,804,4060,4060_26,OX,Exp,Non-disease,Chris,829.9904047
+2021,WE_South Charleston,2021_E_South_Char,1,402,4213,4213_28,OX,Exp,Non-disease,Chris,816.732757
+2021,WE_South Charleston,2021_E_South_Char,2,1904,4213,4213_1,OX,Exp,Non-disease,Chris,799.9602912
+2021,WE_South Charleston,2021_E_South_Char,1,1104,3064,3064_19,OX,Exp,Non-disease,Chris,790.7724331
+2021,WE_South Charleston,2021_E_South_Char,2,1305,4060,4060_24,OX,Exp,Non-disease,Chris,778.6863915
+2021,WE_South Charleston,2021_E_South_Char,1,303,4213,4213_41,OX,Exp,Non-disease,Chris,738.4818043
+2021,WE_South Charleston,2021_E_South_Char,1,305,4213,4213_10,OX,Exp,Non-disease,Chris,677.9282696
+2021,WE_South Charleston,2021_E_South_Char,1,304,4213,4213_20,PI 105B,Exp,Non-disease,Chris,638.2786537
+2021,Wooster,2021_Wooster,1,102,4213,4213_33,PI 105B,Exp,Non-disease,Chris,2513.752692
+2021,Wooster,2021_Wooster,1,1004,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2383.013927
+2021,Wooster,2021_Wooster,1,1005,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2377.476756
+2021,Wooster,2021_Wooster,1,303,4213,4213_18,PI 105B,Exp,Non-disease,Chris,2327.457642
+2021,Wooster,2021_Wooster,2,1805,4060,4060_14,PI 105B,Exp,Non-disease,Chris,2301.679034
+2021,Wooster,2021_Wooster,1,501,4213,4213_17,PI 105B,Exp,Non-disease,Chris,2279.468825
+2021,Wooster,2021_Wooster,2,2402,4213,4213_18,PI 105B,Exp,Non-disease,Chris,2279.222728
+2021,Wooster,2021_Wooster,2,1604,4060,4060_36,PI 105B,Exp,Non-disease,Chris,2182.691376
+2021,Wooster,2021_Wooster,1,904,3064,3064_39,OX,Exp,Non-disease,Chris,2177.338778
+2021,Wooster,2021_Wooster,2,1502,3064,3064_39,OX,Exp,Non-disease,Chris,2026.789244
+2021,Wooster,2021_Wooster,2,2302,4213,4213_33,PI 105B,Exp,Non-disease,Chris,1971.294484
+2021,Wooster,2021_Wooster,1,204,4213,4213_41,OX,Exp,Non-disease,Chris,1916.35344
+2021,Wooster,2021_Wooster,2,2102,4213,4213_17,PI 105B,Exp,Non-disease,Chris,1900.726312
+2021,Wooster,2021_Wooster,1,703,3064,3064_2,PI 106,Exp,Non-disease,Chris,1895.189141
+2021,Wooster,2021_Wooster,1,101,4213,4213_45,OX,Exp,Non-disease,Chris,1862.519831
+2021,Wooster,2021_Wooster,1,203,4213,4213_40,PI 105B,Exp,Non-disease,Chris,1813.608152
+2021,Wooster,2021_Wooster,1,405,4213,4213_20,PI 105B,Exp,Non-disease,Chris,1747.96191
+2021,Wooster,2021_Wooster,1,202,4213,4213_8,OX,Exp,Non-disease,Chris,1747.408193
+2021,Wooster,2021_Wooster,1,105,4213,4213_31,PI 105B,Exp,Non-disease,Chris,1741.932546
+2021,Wooster,2021_Wooster,1,903,3064,3064_36,OX,Exp,Non-disease,Chris,1741.68645
+2021,Wooster,2021_Wooster,1,705,3064,3064_7,PI 106,Exp,Non-disease,Chris,1732.519355
+2021,Wooster,2021_Wooster,1,905,3064,3064_50,PI 106,Exp,Non-disease,Chris,1706.310078
+2021,Wooster,2021_Wooster,2,2404,4213,4213_41,OX,Exp,Non-disease,Chris,1688.652654
+2021,Wooster,2021_Wooster,2,2403,4213,4213_56,OX,Exp,Non-disease,Chris,1686.007117
+2021,Wooster,2021_Wooster,1,404,4213,4213_11,PI 105B,Exp,Non-disease,Chris,1668.411217
+2021,Wooster,2021_Wooster,2,1305,3064,3064_32,PI 106,Exp,Non-disease,Chris,1661.766612
+2021,Wooster,2021_Wooster,1,1003,4060,4060_44,OX,Exp,Non-disease,Chris,1654.629813
+2021,Wooster,2021_Wooster,2,2105,4213,4213_20,PI 105B,Exp,Non-disease,Chris,1645.216622
+2021,Wooster,2021_Wooster,1,1201,4060,4060_7,OX,Exp,Non-disease,Chris,1638.510492
+2021,Wooster,2021_Wooster,2,2103,4213,4213_40,PI 105B,Exp,Non-disease,Chris,1636.418672
+2021,Wooster,2021_Wooster,1,604,4213,4213_14,OX,Exp,Non-disease,Chris,1632.419604
+2021,Wooster,2021_Wooster,1,301,4213,4213_9,OX,Exp,Non-disease,Chris,1620.299351
+2021,Wooster,2021_Wooster,1,601,4213,4213_56,OX,Exp,Non-disease,Chris,1613.531698
+2021,Wooster,2021_Wooster,1,603,4213,4213_10,OX,Exp,Non-disease,Chris,1608.056051
+2021,Wooster,2021_Wooster,2,1303,3064,3064_3,PI 106,Exp,Non-disease,Chris,1598.089142
+2021,Wooster,2021_Wooster,1,805,3064,3064_27,OX,Exp,Non-disease,Chris,1595.443605
+2021,Wooster,2021_Wooster,1,402,4213,4213_32,PI 105B,Exp,Non-disease,Chris,1587.445469
+2021,Wooster,2021_Wooster,2,1705,4060,4060_44,OX,Exp,Non-disease,Chris,1581.539153
+2021,Wooster,2021_Wooster,1,1202,4060,4060_40,PI 105B,Exp,Non-disease,Chris,1580.985436
+2021,Wooster,2021_Wooster,2,1505,3064,3064_7,PI 106,Exp,Non-disease,Chris,1573.233396
+2021,Wooster,2021_Wooster,1,103,4213,4213_46,OX,Exp,Non-disease,Chris,1564.927639
+2021,Wooster,2021_Wooster,2,1602,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1564.373922
+2021,Wooster,2021_Wooster,2,2003,4213,4213_31,PI 105B,Exp,Non-disease,Chris,1562.282102
+2021,Wooster,2021_Wooster,2,1704,4060,4060_7,OX,Exp,Non-disease,Chris,1557.790841
+2021,Wooster,2021_Wooster,1,1105,4060,4060_26,OX,Exp,Non-disease,Chris,1553.484152
+2021,Wooster,2021_Wooster,1,201,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1544.80925
+2021,Wooster,2021_Wooster,1,801,3064,3064_14,PI 106,Exp,Non-disease,Chris,1543.455719
+2021,Wooster,2021_Wooster,2,1605,4060,4060_24,OX,Exp,Non-disease,Chris,1541.302375
+2021,Wooster,2021_Wooster,2,2104,4213,4213_28,OX,Exp,Non-disease,Chris,1535.026914
+2021,Wooster,2021_Wooster,2,1302,3064,3064_2,PI 106,Exp,Non-disease,Chris,1532.135281
+2021,Wooster,2021_Wooster,1,1101,4060,4060_6,OX,Exp,Non-disease,Chris,1529.551267
+2021,Wooster,2021_Wooster,2,1402,3064,3064_50,PI 106,Exp,Non-disease,Chris,1520.630269
+2021,Wooster,2021_Wooster,1,505,4213,4213_49,PI 105B,Exp,Non-disease,Chris,1518.907594
+2021,Wooster,2021_Wooster,1,1002,4060,4060_24,OX,Exp,Non-disease,Chris,1505.187714
+2021,Wooster,2021_Wooster,2,1405,3064,3064_36,OX,Exp,Non-disease,Chris,1488.022483
+2021,Wooster,2021_Wooster,2,1401,3064,3064_25,OX,Exp,Non-disease,Chris,1484.823229
+2021,Wooster,2021_Wooster,2,1702,4060,4060_42,OX,Exp,Non-disease,Chris,1473.195169
+2021,Wooster,2021_Wooster,1,901,3064,3064_28,OX,Exp,Non-disease,Chris,1469.503721
+2021,Wooster,2021_Wooster,2,1804,4060,4060_40,PI 105B,Exp,Non-disease,Chris,1468.457811
+2021,Wooster,2021_Wooster,2,2204,4213,4213_29,PI 105B,Exp,Non-disease,Chris,1462.428447
+2021,Wooster,2021_Wooster,1,902,3064,3064_32,PI 106,Exp,Non-disease,Chris,1461.936254
+2021,Wooster,2021_Wooster,1,602,4213,4213_28,OX,Exp,Non-disease,Chris,1459.967482
+2021,Wooster,2021_Wooster,1,302,4213,4213_29,PI 105B,Exp,Non-disease,Chris,1452.400015
+2021,Wooster,2021_Wooster,1,704,3064,3064_3,PI 106,Exp,Non-disease,Chris,1449.692953
+2021,Wooster,2021_Wooster,1,1103,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1446.247602
+2021,Wooster,2021_Wooster,2,2005,4213,4213_9,OX,Exp,Non-disease,Chris,1442.125486
+2021,Wooster,2021_Wooster,2,2205,4213,4213_32,PI 105B,Exp,Non-disease,Chris,1435.665453
+2021,Wooster,2021_Wooster,2,1603,4060,4060_26,OX,Exp,Non-disease,Chris,1434.558019
+2021,Wooster,2021_Wooster,2,1403,3064,3064_14,PI 106,Exp,Non-disease,Chris,1421.576428
+2021,Wooster,2021_Wooster,1,803,3064,3064_24,PI 106,Exp,Non-disease,Chris,1419.423084
+2021,Wooster,2021_Wooster,1,804,3064,3064_25,OX,Exp,Non-disease,Chris,1370.265308
+2021,Wooster,2021_Wooster,2,2304,4213,4213_45,OX,Exp,Non-disease,Chris,1353.899891
+2021,Wooster,2021_Wooster,1,304,4213,4213_47,OX,Exp,Non-disease,Chris,1352.484836
+2021,Wooster,2021_Wooster,2,2201,4213,4213_8,OX,Exp,Non-disease,Chris,1351.069781
+2021,Wooster,2021_Wooster,2,2001,4213,4213_46,OX,Exp,Non-disease,Chris,1348.116623
+2021,Wooster,2021_Wooster,2,1904,4213,4213_11,PI 105B,Exp,Non-disease,Chris,1344.855845
+2021,Wooster,2021_Wooster,2,2203,4213,4213_30,PI 105B,Exp,Non-disease,Chris,1328.059758
+2021,Wooster,2021_Wooster,2,2303,4213,4213_37,PI 105B,Exp,Non-disease,Chris,1318.708091
+2021,Wooster,2021_Wooster,1,403,4213,4213_1,OX,Exp,Non-disease,Chris,1315.385789
+2021,Wooster,2021_Wooster,2,2101,4213,4213_47,OX,Exp,Non-disease,Chris,1312.924824
+2021,Wooster,2021_Wooster,2,1304,3064,3064_24,PI 106,Exp,Non-disease,Chris,1289.29956
+2021,Wooster,2021_Wooster,2,1404,3064,3064_27,OX,Exp,Non-disease,Chris,1281.362948
+2021,Wooster,2021_Wooster,1,504,4213,4213_21,OX,Exp,Non-disease,Chris,1265.612772
+2021,Wooster,2021_Wooster,2,1703,4060,4060_6,OX,Exp,Non-disease,Chris,1265.243627
+2021,Wooster,2021_Wooster,1,802,3064,3064_19,OX,Exp,Non-disease,Chris,1254.907574
+2021,Wooster,2021_Wooster,2,1601,4060,4060_30,PI 105B,Exp,Non-disease,Chris,1231.466882
+2021,Wooster,2021_Wooster,1,1203,4060,4060_35,PI 105B,Exp,Non-disease,Chris,1214.178603
+2021,Wooster,2021_Wooster,2,2405,4213,4213_14,OX,Exp,Non-disease,Chris,1214.055555
+2021,Wooster,2021_Wooster,1,1001,4060,4060_48,OX,Exp,Non-disease,Chris,1206.734184
+2021,Wooster,2021_Wooster,1,305,4213,4213_37,PI 105B,Exp,Non-disease,Chris,1189.568953
+2021,Wooster,2021_Wooster,2,1301,3064,3064_28,OX,Exp,Non-disease,Chris,1189.199809
+2021,Wooster,2021_Wooster,2,1905,4213,4213_49,PI 105B,Exp,Non-disease,Chris,1180.647955
+2021,Wooster,2021_Wooster,1,1204,4060,4060_43,PI 105B,Exp,Non-disease,Chris,1173.080488
+2021,Wooster,2021_Wooster,2,1803,4060,4060_48,OX,Exp,Non-disease,Chris,1164.528635
+2021,Wooster,2021_Wooster,2,1802,4060,4060_35,PI 105B,Exp,Non-disease,Chris,1152.777527
+2021,Wooster,2021_Wooster,1,1205,4060,4060_42,OX,Exp,Non-disease,Chris,1084.916417
+2021,Wooster,2021_Wooster,2,1501,3064,3064_19,OX,Exp,Non-disease,Chris,1079.133149
+2021,Wooster,2021_Wooster,2,2004,4213,4213_21,OX,Exp,Non-disease,Chris,1076.179991
+2021,Wooster,2021_Wooster,2,2202,4213,4213_10,OX,Exp,Non-disease,Chris,1063.382973
+2021,Wooster,2021_Wooster,2,2301,4213,4213_1,OX,Exp,Non-disease,Chris,1007.211448
+2021,Wooster,2021_Wooster,2,2305,4213,4213_2,PI 105B,Exp,Non-disease,Chris,943.5339783
+2021,Wooster,2021_Wooster,1,205,4213,4213_2,PI 105B,Exp,Non-disease,Chris,725.2463834

@@ -1,0 +1,337 @@
+#Analysis of 2015 to 2021 yield data by CVG with P sojae Pressure 
+#analyzed using R version 3.5.1
+#set working directory
+setwd("C:/Users/chris/Desktop/My research (Objective 3 + Field)/Field_trial_Data_No_Ps_Pressure_Nils/Present & Absent of P sojae Data set (all years)/No_Psojae_Pressure_Data")
+#import csv file
+Combined_Yield = read.csv("QDRL18_NILS_Yield_Multi_Year_Data_Set_No_Parents_No_Psojae.csv", sep=",", header=T,na.strings="NA") 
+Combined_Yield  
+head(Combined_Yield)
+tail(Combined_Yield)
+str(Combined_Yield)
+
+#change block, plot, RIL family to factor
+Combined_Yield $Year<- factor(Combined_Yield $Year,ordered=TRUE)
+Combined_Yield $Location <- factor(Combined_Yield $Location,ordered=FALSE) 
+Combined_Yield $Environment<- factor(Combined_Yield $Environment,ordered=TRUE)
+Combined_Yield $Block <- factor(Combined_Yield $Block,ordered=TRUE)
+Combined_Yield $Plot <- factor(Combined_Yield $Plot,ordered=FALSE)
+Combined_Yield $RIL.Family <- factor(Combined_Yield $RIL.Family,ordered=FALSE)
+Combined_Yield $Line<- factor(Combined_Yield $Line,ordered=FALSE)
+Combined_Yield $QTL_Allele<- factor(Combined_Yield $QTL_Allele,ordered=FALSE)
+Combined_Yield $Type<- factor(Combined_Yield $Type,ordered=FALSE)
+Combined_Yield$Condition<-factor(Combined_Yield$Condition)
+Combined_Yield$Researcher<-as.character(Combined_Yield$Researcher)
+str(Combined_Yield )
+
+#Re name variables to make it easy to use 
+year=as.factor(Combined_Yield $Year) 
+location=as.factor(Combined_Yield $Location)
+env=as.factor(Combined_Yield $Environment)
+block=as.factor(Combined_Yield  $Block)
+plot=as.factor(Combined_Yield $Plot)
+RILfamily=as.factor(Combined_Yield  $RIL.Family)
+line=as.factor(Combined_Yield $Line)
+allele=as.factor(Combined_Yield $QTL_Allele)
+type=as.factor(Combined_Yield $Type) 
+condition=as.factor(Combined_Yield $Condition)
+yield=as.numeric(Combined_Yield $Yield)
+str(Combined_Yield)
+#explore data using plots to detect outliers
+plot(yield~year, col="orange",main="Five Year Yield Trial")
+plot(yield~block,main="Overall Yield by Block Five year Trial",col="gray")
+plot(yield~allele,main="Yield by Specific Allele Five year Trial ",col="gray")
+plot(yield~RILfamily,main=" Yield by RILfamily Five year Trial ",col="gray")
+#check and identify Yield~allele outliers
+#DataCheck1<-yield[allele=="PI 105B"]
+#boxplot.stats(DataCheck1)
+#DataCheck2<-yield[RILfamily=="4060"]
+#boxplot.stats(DataCheck2)
+#Check ANOVA Assumptions for a Normal Distribution of the Overall Yield
+h<-hist(yield,main = "Yield Distribution in Five Year Trial", ylab="Yield Frequency", xlab="Yield (Kg/ha)", col="gray")
+h
+qqnorm(yield)
+plot(yield)
+##histogram per RIL family “3064” “4060” “4213” 
+library(doBy)
+hist(yield[RILfamily=="3064"],xlab="RIL Family 3064",main="Yield",col="gray")
+hist(yield[RILfamily=="4060"],xlab="RIL Family 4060",main="Yield",col="gray")
+hist(yield[RILfamily=="4213"],xlab="RIL Family 4213",main="Yield", col="gray")
+#mixed model with lmerTest and lme4
+library(lmerTest)
+library(lme4)
+model1<- lmer (yield~(1|block:env) + (1|env) + RILfamily + allele:RILfamily)
+#env= Year x location
+#condition= Desease or Non-desease 
+#ANOVAs Tables
+Anova<-anova(model1)
+Ranova<-ranova(model1)
+summary(model1)
+write.table(Anova,file="5_Year_Yield_Data_Anova_With_Psojae.csv",sep=",")
+write.table(Ranova,file="5_Year_Yield_Data_Ranova_With_Psojae.csv",sep=",")
+# Calculates Least Squares Means for the Interaction RILfamily:allele 
+options(max.print=9999)
+Lsmeans_model1<-difflsmeans(model1,test.effs="RILfamily:allele") 
+write.table(Lsmeans_model1,file="5_Year_Yield_Data_LsMeans_With_Psojae.csv",sep=",")
+#Least Squares Means Pairwise
+library(emmeans)
+lsmeans(model1, list(pairwise~allele:RILfamily))
+#ttest for condition variable 
+t.test(yield[RILfamily=="4213"], yield[RILfamily=="4060"],na.rm=T,data= Combined_Yield)
+t.test(yield[RILfamily=="4213"], yield[RILfamily=="3064"],na.rm=T,data= Combined_Yield)
+t.test(yield[RILfamily=="4060"], yield[RILfamily=="3064"],na.rm=T,data= Combined_Yield)
+
+
+
+
+5 year yield data combine dinto NILs by Condition
+#Mean for NILs planted with Disease Presence 
+A<-(mean(yield[RILfamily==4213&allele=="OX"],na.rm=T))
+B<-(mean(yield[RILfamily==4213&allele=="PI 105B"],na.rm=T))
+C<-(mean(yield[RILfamily==4060&allele=="OX"],na.rm=T))
+D<-(mean(yield[RILfamily==4060&allele=="PI 105B"],na.rm=T))
+E<-(mean(yield[RILfamily==3064&allele=="OX"],na.rm=T))
+F<-(mean(yield[RILfamily==3064&allele=="PI 106"],na.rm=T))
+
+#subset data and calculate data standard error for error bars (Disease Presence)
+a <- subset(yield,RILfamily==4213&allele=="OX",na.rm=TRUE)
+seA<-sd(a,na.rm=T)/sqrt(length(a))   
+b <- subset(yield,RILfamily==4213&allele=="PI 105B",na.rm=TRUE)
+seB<-sd(b,na.rm=T)/sqrt(length(b)) 
+
+c <- subset(yield,RILfamily==4060&allele=="OX",na.rm=TRUE)
+seC<-sd(c,na.rm=T)/sqrt(length(c))  
+d <- subset(yield,RILfamily==4060&allele=="PI 105B",na.rm=TRUE)
+seD<-sd(d,na.rm=T)/sqrt(length(d))   
+
+e <- subset(yield,RILfamily==3064&allele=="OX",na.rm=TRUE)
+seE<-sd(e,na.rm=T)/sqrt(length(e))  
+f <- subset(yield,RILfamily==3064&allele=="PI 106",na.rm=TRUE)
+seF<-sd(f,na.rm=T)/sqrt(length(f))    
+##create data frame for bar graph
+library(ggplot2)
+library(ggsignif)
+#without the parents 
+Frame2<-data.frame(Yield=c(A,B,C,D,E,F),se=c(seA,seB,seC,seD,seE,seF),Introgression = factor(c("OX","PI105B","OX","PI105B","OX","PI106")),INT= factor(c("OX-4213","PI105B-4213","OX-4060","PI105B-4060","OX-3064","PI106-3064")),NILfamily= factor(c("4213","4213","4060","4060","3064","3064")),Order=factor(c("1","1","2","2","3","3")))
+#create limits for error bars and graph (without parents) 
+Limits2 <-aes(ymax = Yield + se, ymin = Yield - se)
+theme_set(theme_bw(base_size=20))
+P2<-ggplot(Frame2, aes(Order,Yield,fill=Introgression)) + stat_summary (fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar (Limits2, position = position_dodge(width = 0.9), width = 0.3,size=0.8) + scale_fill_manual (values=c("gray25","gray75","white")) + xlab("      ") + ylab("Yield (kg/ha)") 
+#+ theme(legend.position="none") 
+#+ ggtitle('Reduce of P. sojae')
+ggsave("Five Years NILs Yield Trial (by_Family)_No_Psojae_Legend).jpeg",P2,width=100,units="mm",dpi=600)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Extra for location 
+#calculated averages of allele within 3064 RIL family Sus
+A1<-(mean(yield[location=="Defiance"&RILfamily=="3064"&allele=="OX"],na.rm=T))
+A2<-(mean(yield[location=="VW"&RILfamily==3064&allele=="OX"],na.rm=T))
+A3<-(mean(yield[location=="Pond"&RILfamily==3064&allele=="OX"],na.rm=T))
+A4<-(mean(yield[env=="2019_Wooster"&RILfamily==3064&allele=="OX"],na.rm=T))
+A5<-(mean(yield[env=="2020_Wooster"&RILfamily==3064&allele=="OX"],na.rm=T))
+A6<-(mean(yield[env=="2021_NW_Dor"&RILfamily==3064&allele=="OX"],na.rm=T))
+A7<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==3064&allele=="OX"],na.rm=T))
+A8<-(mean(yield[env=="2021_E_South_Char"&RILfamily==3064&allele=="OX"],na.rm=T))
+A9<-(mean(yield[env=="2021_Wooster"&RILfamily==3064&allele=="OX"],na.rm=T))
+
+#calculated averages of allele within 3064 RIL family Res
+B1<-(mean(yield[location=="Defiance"&RILfamily=="3064"&allele=="PI 106"],na.rm=T))
+B2<-(mean(yield[location=="VW"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B3<-(mean(yield[location=="Pond"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B4<-(mean(yield[env=="2019_Wooster"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B5<-(mean(yield[env=="2020_Wooster"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B6<-(mean(yield[env=="2021_NW_Dor"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B7<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B8<-(mean(yield[env=="2021_E_South_Char"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+B9<-(mean(yield[env=="2021_Wooster"&RILfamily==3064&allele=="PI 106"],na.rm=T))
+
+#calculated averages of allele within 4060 RIL family Sus
+A10<-(mean(yield[location=="Defiance"&RILfamily=="4060"&allele=="OX"],na.rm=T))
+A11<-(mean(yield[location=="VW"&RILfamily==4060&allele=="OX"],na.rm=T))
+A12<-(mean(yield[location=="Pond"&RILfamily==4060&allele=="OX"],na.rm=T))
+A13<-(mean(yield[env=="2019_Wooster"&RILfamily==4060&allele=="OX"],na.rm=T))
+A14<-(mean(yield[env=="2020_Wooster"&RILfamily==4060&allele=="OX"],na.rm=T))
+A15<-(mean(yield[env=="2021_NW_Dor"&RILfamily==4060&allele=="OX"],na.rm=T))
+A16<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==4060&allele=="OX"],na.rm=T))
+A17<-(mean(yield[env=="2021_E_South_Char"&RILfamily==4060&allele=="OX"],na.rm=T))
+A18<-(mean(yield[env=="2021_Wooster"&RILfamily==4060&allele=="OX"],na.rm=T))
+#calculated averages of allele within 4060 RIL family Res
+B10<-(mean(yield[location=="Defiance"&RILfamily=="4060"&allele=="PI 105B"],na.rm=T))
+B11<-(mean(yield[location=="VW"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B12<-(mean(yield[location=="Pond"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B13<-(mean(yield[env=="2019_Wooster"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B14<-(mean(yield[env=="2020_Wooster"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B15<-(mean(yield[env=="2021_NW_Dor"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B16<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B17<-(mean(yield[env=="2021_E_South_Char"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+B18<-(mean(yield[env=="2021_Wooster"&RILfamily==4060&allele=="PI 105B"],na.rm=T))
+#calculated averages of allele within 4213 RIL family Sus
+A19<-(mean(yield[location=="Defiance"&RILfamily=="4213"&allele=="OX"],na.rm=T))
+A20<-(mean(yield[location=="VW"&RILfamily==4213&allele=="OX"],na.rm=T))
+A21<-(mean(yield[location=="Pond"&RILfamily==4213&allele=="OX"],na.rm=T))
+A22<-(mean(yield[env=="2019_Wooster"&RILfamily==4213&allele=="OX"],na.rm=T))
+A23<-(mean(yield[env=="2020_Wooster"&RILfamily==4213&allele=="OX"],na.rm=T))
+A24<-(mean(yield[env=="2021_NW_Dor"&RILfamily==4213&allele=="OX"],na.rm=T))
+A25<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==4213&allele=="OX"],na.rm=T))
+A26<-(mean(yield[env=="2021_E_South_Char"&RILfamily==4213&allele=="OX"],na.rm=T))
+A27<-(mean(yield[env=="2021_Wooster"&RILfamily==4213&allele=="OX"],na.rm=T))
+#calculated averages of allele within 4213 RIL family Res
+B19<-(mean(yield[location=="Defiance"&RILfamily=="4213"&allele=="PI 105B"],na.rm=T))
+B20<-(mean(yield[location=="VW"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B21<-(mean(yield[location=="Pond"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B22<-(mean(yield[env=="2019_Wooster"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B23<-(mean(yield[env=="2020_Wooster"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B24<-(mean(yield[env=="2021_NW_Dor"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B25<-(mean(yield[env=="2021_NW_Hoytville"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B26<-(mean(yield[env=="2021_E_South_Char"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+B27<-(mean(yield[env=="2021_Wooster"&RILfamily==4213&allele=="PI 105B"],na.rm=T))
+#subset data and calculate data standard error for error bars 3064 sus
+a1 <- subset(yield,location=="Defiance"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa1<-sd(a1,na.rm=T)/sqrt(length(a1))   
+a2 <- subset(yield,location=="VW"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa2<-sd(a2,na.rm=T)/sqrt(length(a2))   
+a3 <- subset(yield,location=="Pond"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa3<-sd(a3,na.rm=T)/sqrt(length(a3))   
+a4 <- subset(yield,env=="2019_Wooster"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa4<-sd(a4,na.rm=T)/sqrt(length(a4))   
+a5 <- subset(yield,env=="2020_Wooster"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa5<-sd(a5,na.rm=T)/sqrt(length(a5))   
+a6 <- subset(yield,env=="2021_NW_Dor"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa6<-sd(a6,na.rm=T)/sqrt(length(a6))   
+a7 <- subset(yield,env=="2021_NW_Hoytville"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa7<-sd(a7,na.rm=T)/sqrt(length(a7))
+a8<- subset(yield,env=="2021_E_South_Char"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa8<-sd(a8,na.rm=T)/sqrt(length(a8))   
+a9 <- subset(yield,env=="2021_Wooster"&RILfamily==3064&allele=="OX",na.rm=T)
+seaa9<-sd(a9,na.rm=T)/sqrt(length(a9))   
+
+
+#subset data and calculate data standard error for error bars 3064 res
+b1 <- subset(yield,location=="Defiance"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab1<-sd(b1,na.rm=T)/sqrt(length(b1))   
+b2 <- subset(yield,location=="VW"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab2<-sd(b2,na.rm=T)/sqrt(length(b2))   
+b3 <- subset(yield,location=="Pond"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab3<-sd(b3,na.rm=T)/sqrt(length(b3))   
+b4 <- subset(yield,env=="2019_Wooster"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab4<-sd(b4,na.rm=T)/sqrt(length(b4))   
+b5 <- subset(yield,env=="2020_Wooster"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab5<-sd(b5,na.rm=T)/sqrt(length(b5))   
+b6 <- subset(yield,env=="2021_NW_Dor"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab6<-sd(b6,na.rm=T)/sqrt(length(b6))   
+b7 <- subset(yield,env=="2021_NW_Hoytville"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab7<-sd(b7,na.rm=T)/sqrt(length(b7))   
+b8 <- subset(yield,env=="2021_E_South_Char"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab8<-sd(b8,na.rm=T)/sqrt(length(b8))   
+b9 <- subset(yield,env=="2021_Wooster"&RILfamily==3064&allele=="PI 106",na.rm=T)
+seab9<-sd(b9,na.rm=T)/sqrt(length(b9))   
+#subset data and calculate data standard error for error bars 4060 sus
+a10 <- subset(yield,location=="Defiance"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa10<-sd(a10,na.rm=T)/sqrt(length(a10))   
+a11 <- subset(yield,location=="VW"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa11<-sd(a11,na.rm=T)/sqrt(length(a11))   
+a12 <- subset(yield,location=="Pond"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa12<-sd(a12,na.rm=T)/sqrt(length(a12))   
+a13<- subset(yield,env=="2019_Wooster"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa13<-sd(a13,na.rm=T)/sqrt(length(a13))   
+a14 <- subset(yield,env=="2020_Wooster"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa14<-sd(a14,na.rm=T)/sqrt(length(a14))   
+a15 <- subset(yield,env=="2021_NW_Dor"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa15<-sd(a15,na.rm=T)/sqrt(length(a15))   
+
+a16 <- subset(yield,env=="2021_NW_Hoytville"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa16<-sd(a16,na.rm=T)/sqrt(length(a16))   
+a17 <- subset(yield,env=="2021_E_South_Char"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa17<-sd(a17,na.rm=T)/sqrt(length(a17))   
+a18 <- subset(yield,env=="2021_Wooster"&RILfamily==4060&allele=="OX",na.rm=T)
+seaa18<-sd(a18,na.rm=T)/sqrt(length(a18))
+#subset data and calculate data standard error for error bars 4060 res
+b10 <- subset(yield,location=="Defiance"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab10<-sd(b10,na.rm=T)/sqrt(length(b10))   
+b11 <- subset(yield,location=="VW"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab11<-sd(b11,na.rm=T)/sqrt(length(b11))   
+b12 <- subset(yield,location=="Pond"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab12<-sd(b12,na.rm=T)/sqrt(length(b12))   
+b13<- subset(yield,env=="2019_Wooster"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab13<-sd(b13,na.rm=T)/sqrt(length(b13))   
+b14 <- subset(yield,env=="2020_Wooster"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab14<-sd(b14,na.rm=T)/sqrt(length(b14))   
+b15 <- subset(yield,env=="2021_NW_Dor"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab15<-sd(b15,na.rm=T)/sqrt(length(b15))   
+b16 <- subset(yield,env=="2021_NW_Hoytville"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab16<-sd(b16,na.rm=T)/sqrt(length(b16))   
+b17 <- subset(yield,env=="2021_E_South_Char"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab17<-sd(b17,na.rm=T)/sqrt(length(b17))   
+b18 <- subset(yield,env=="2021_Wooster"&RILfamily==4060&allele=="PI 105B",na.rm=T)
+seab18<-sd(b18,na.rm=T)/sqrt(length(b18))   
+
+
+#subset data and calculate data standard error for error bars 4213 sus
+a19 <- subset(yield,location=="Defiance"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa19<-sd(a19,na.rm=T)/sqrt(length(a19))   
+a20 <- subset(yield,location=="VW"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa20<-sd(a20,na.rm=T)/sqrt(length(a20))   
+a21 <- subset(yield,location=="Pond"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa21<-sd(a21,na.rm=T)/sqrt(length(a21))   
+a22<- subset(yield,env=="2019_Wooster"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa22<-sd(a22,na.rm=T)/sqrt(length(a22))   
+a23 <- subset(yield,env=="2020_Wooster"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa23<-sd(a23,na.rm=T)/sqrt(length(a23))   
+a24 <- subset(yield,env=="2021_NW_Dor"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa24<-sd(a24,na.rm=T)/sqrt(length(a24))   
+a25 <- subset(yield,env=="2021_NW_Hoytville"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa25<-sd(a25,na.rm=T)/sqrt(length(a25))   
+a26 <- subset(yield,env=="2021_E_South_Char"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa26<-sd(a26,na.rm=T)/sqrt(length(a26))   
+a27 <- subset(yield,env=="2021_Wooster"&RILfamily==4213&allele=="OX",na.rm=T)
+seaa27<-sd(a27,na.rm=T)/sqrt(length(a27))   
+#subset data and calculate data standard error for error bars 4213 res
+b19 <- subset(yield,location=="Defiance"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab19<-sd(b19,na.rm=T)/sqrt(length(b19))   
+b20 <- subset(yield,location=="VW"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab20<-sd(b20,na.rm=T)/sqrt(length(b20))   
+b21 <- subset(yield,location=="Pond"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab21<-sd(b21,na.rm=T)/sqrt(length(b21))   
+b22<- subset(yield,env=="2019_Wooster"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab22<-sd(b22,na.rm=T)/sqrt(length(b22))   
+b23<- subset(yield,env=="2020_Wooster"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab23<-sd(b23,na.rm=T)/sqrt(length(b23))   
+b24<- subset(yield,env=="2021_NW_Dor"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab24<-sd(b24,na.rm=T)/sqrt(length(b24))   
+b25<- subset(yield,env=="2021_NW_Hoytville"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab25<-sd(b25,na.rm=T)/sqrt(length(b25))   
+b26<- subset(yield,env=="2021_E_South_Char"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab26<-sd(b26,na.rm=T)/sqrt(length(b26))   
+b27<- subset(yield,env=="2021_Wooster"&RILfamily==4213&allele=="PI 105B",na.rm=T)
+seab27<-sd(b27,na.rm=T)/sqrt(length(b27))   
+#chart out data with standard error bars
+##create data frame for bar graph
+library(ggplot2)
+library(ggsignif)
+#without the parents 
+Frame1<-data.frame(Yield=c(A1,A2,A3,A4,A5,A6,A7,A8,A9,B1,B2,B3,B4,B5,B6,B7,B8,B9,A10,A11,A12,A13,A14,A15,A16,A17,A18,B10,B11,B12,B13,B14,B15,B16,B17,B18,A19,A20,A21,A22,A23,A24,A25,A26,A27,B19,B20,B21,B22,B23,B24,B25,B26,B27),se=c(seaa1,seaa2,seaa3,seaa4,seaa5,seaa6,seaa7,seaa8,seaa9,seab1,seab2,seab3,seab4,seab5,seab6,seab7,seab8,seab9,seaa10,seaa11,seaa12,seaa13,seaa14,seaa15,seaa16,seaa17,seaa18,seab10,seab11,seab12,seab13,seab14,seab15,seab16,seab17,seab18,seaa19,seaa20,seaa21,seaa22,seaa23,seaa24,seaa25,seaa26,seaa27, seab19,seab20,seab21,seab22,seab23,seab24,seab25,seab26,seab27), Location= factor(c("2015_Defiance","2016_VW", "2017_Pond","2019_Wooster","2020_Wooster","2021_NW_Dor","2021_NW_Hoytville","2021_E_South_Char","2021_Wooster")),INT= factor(c("OX-3064","OX-3064","OX-3064","OX-3064","OX-3064","OX-3064","OX-3064","OX-3064","OX-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","PI106-3064","OX-4060","OX-4060","OX-4060","OX-4060","OX-4060","OX-4060","OX-4060","OX-4060","OX-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","PI105B-4060","OX-4213","OX-4213","OX-4213","OX-4213", "OX-4213","OX-4213","OX-4213","OX-4213","OX-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213","PI105B-4213")), NILfamily= factor(c("3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","3064","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4060","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213","4213")),Order=factor(c("1","1","1","1","1","1","1","1","1","2","2","2","2","2","2","2","2","2","3","3","3","3","3","3","3","3","3","4","4","4","4","4","4","4","4","4","5","5","5","5","5", "5","5","5","5","6","6","6","6","6", "6","6","6","6")))
+#create limits for error bars and graph (without parents) 
+Limits1 <-aes(ymax = Yield + se, ymin = Yield - se)
+theme_set(theme_bw(base_size=15))
+P1<-ggplot(Frame1, aes(Order,Yield,fill=Location)) + stat_summary (fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar (Limits1, position = position_dodge(width = 0.9), width = 0.4,size=0.8) + scale_fill_manual (values=c("#FF3333","#3333FF","#006600","#009999","#FF6600","#FFFF00","black","gray45","gray100")) + xlab("      ") + ylab("Yield (kg/ha)")
+
+# + theme(legend.position="none")
+ggsave("Five Years NILs Yield Trial.jpeg",P1,width=280,units="mm",dpi=300)
+
+#add significance based on LSmeans table 
+#p + geom_signif(y_position=c(2800,2600,1750), xmin=c(0.8,0,0), xmax=c(1.2,0,0),size=0.9,annotation=c("*"," "," "))
