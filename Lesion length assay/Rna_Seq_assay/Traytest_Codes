@@ -1,0 +1,133 @@
+#analyzed using R version 3.4.3
+
+#set working directory
+setwd("C:/Users/sverhoff/Documents/R/TrayTest/Zoospores")
+
+#import csv file
+LesionLength = read.csv("Zoospore_LesionLength_AltAllele.csv", sep=",",header=T)
+
+#check data
+head(LesionLength)
+tail(LesionLength)
+summary(LesionLength)
+str(LesionLength)
+
+#change Rep factor
+LesionLength$Rep <- factor(LesionLength$Rep,ordered=TRUE)
+
+#change Plant 7 and Plant 8 to numeric
+LesionLength$Plant7 <- as.numeric(LesionLength$Plant7,ordered=TRUE)
+LesionLength$Plant8 <- as.numeric(LesionLength$Plant8,ordered=TRUE)
+
+#re-check structure of data frame
+str(LesionLength)
+
+#assign variable names for ease of use
+LINE=as.factor(LesionLength$Line)
+FAMILY=as.factor(LesionLength$Family)
+ALLELE=as.factor(LesionLength$Allele)
+REP=as.factor(LesionLength$Rep)
+AVG=as.numeric(LesionLength$Average)
+
+#create subset of data by family 
+#Family1 = 4060; Family2 = 4213; Family3 = 3064
+Family1 <- subset(AVG,FAMILY==4060)
+Family2 <- subset(AVG,FAMILY==4213)
+Family3 <- subset(AVG,FAMILY==3064)
+
+#mean disease progress by allele within family
+mean(AVG[FAMILY=="4060"&ALLELE=="PI 105B"],na.rm=T)
+mean(AVG[FAMILY=="4060"&ALLELE=="OX"],na.rm=T)
+mean(AVG[FAMILY=="4213"&ALLELE=="PI 105B"],na.rm=T)
+mean(AVG[FAMILY=="4213"&ALLELE=="OX"],na.rm=T)
+mean(AVG[FAMILY=="3064"&ALLELE=="PI 106"],na.rm=T)
+mean(AVG[FAMILY=="3064"&ALLELE=="OX"],na.rm=T)
+
+#mean lesion length for checks
+mean(AVG[LINE=="OX 20-8"],na.rm=T)#36.45
+mean(AVG[LINE=="PI 427105B"],na.rm=T)#23
+mean(AVG[LINE=="PI 427106"],na.rm=T)#24.29
+mean(AVG[LINE=="CONRAD"],na.rm=T)#18.81
+mean(AVG[LINE=="SLOAN"],na.rm=T)#28.49
+
+#histogram of stand counts by family 
+hist(AVG[FAMILY==4060&ALLELE=="PI 105B"],xlab="Lesion Length",main="Family 4060 Allele PI Pathogen Spread",col=3)
+hist(AVG[FAMILY==4060&ALLELE=="OX"],xlab="Lesion Length",main="Family 4060 Allele OX Pathogen Spread",col=4)
+hist(AVG[FAMILY==4213&ALLELE=="PI 105B"],xlab="Lesion Length",main="Family 4213 Allele PI Pathogen Spread",col=5)
+hist(AVG[FAMILY==4213&ALLELE=="OX"],xlab="Lesion Length",main="Family 4213 Allele OX Pathogen Spread",col=6)
+hist(AVG[FAMILY==3064&ALLELE=="PI 106"],xlab="Lesion Length",main="Family 3064 Allele PI Pathogen Spread",col=7)
+hist(AVG[FAMILY==3064&ALLELE=="OX"],xlab="Lesion Length",main="Family 3064 Allele OX Pathogen Spread",col=8)
+
+##compare mean lesion length within family between PI and OX groups using independent 2-sample t-test
+#boxplot to visualize data
+boxplot(AVG~ALLELE,na.rm=t)
+
+#t-test assuming unequal variance and null that means between PI and OX allele are equal within family (default)
+#confidence interval is .95 (default)
+t.test(AVG[FAMILY=="4060"&ALLELE=="PI 105B"],AVG[FAMILY=="4060"&ALLELE=="OX"],na.rm=T)
+t.test(AVG[FAMILY==4213&ALLELE=="PI 105B"],AVG[FAMILY==4213&ALLELE=="OX"],na.rm=T)
+t.test(AVG[FAMILY==3064&ALLELE=="PI 106"],AVG[FAMILY==3064&ALLELE=="OX"],na.rm=T)
+
+
+#get standard error 
+a <- subset(AVG,FAMILY=="4213"&ALLELE=="OX",na.rm=TRUE)
+se4213OX<-sd(a,na.rm=T)/sqrt(length(a))
+b <- subset(AVG,FAMILY=="4213"&ALLELE=="PI 105B",na.rm=TRUE)
+se4213PI<-sd(b,na.rm=T)/sqrt(length(b))
+c <- subset(AVG,FAMILY=="4060"&ALLELE=="OX",na.rm=TRUE)
+se4060OX<-sd(c,na.rm=T)/sqrt(length(c))
+d <- subset(AVG,FAMILY=="4060"&ALLELE=="PI 105B",na.rm=TRUE)
+se4060PI<-sd(d,na.rm=T)/sqrt(length(d))
+e <- subset(AVG,FAMILY=="3064"&ALLELE=="OX",na.rm=TRUE)
+se3064OX<-sd(e,na.rm=T)/sqrt(length(e))
+f <- subset(AVG,FAMILY=="3064"&ALLELE=="PI 106",na.rm=TRUE)
+se3064PI<-sd(f,na.rm=T)/sqrt(length(f))
+
+
+#create data frame for bar chart using alt allele
+LesionLength.frame <- data.frame(Introgression = factor(c("SOX","R105B","SOX","R105B","SOX","R106"),levels=c("SOX","R105B", "R106")),Family = factor(c("4213","4213","4060","4060","3064","3064"), levels=c("4213","4060","3064")),AvgLesion = c(28.54,25.04,33.03,23.89,35.30,31.34), se =c(se4213OX, se4213PI, se4060OX, se4060PI, se3064OX, se3064PI))
+
+
+#get mean lesion length for parents
+OX<-(mean(AVG[LINE=="OX 20-8"],na.rm=T)) 
+PI5<-(mean(AVG[LINE=="PI 427105B"],na.rm=T))
+PI6<-(mean(AVG[LINE=="PI 427106"],na.rm=T))
+
+#get standard error for checks
+n <- subset(AVG,LINE=="OX 20-8",na.rm=TRUE)
+seOX<-sd(n,na.rm=T)/sqrt(length(n))
+
+o <- subset(AVG,LINE=="PI 427105B",na.rm=TRUE)
+sePI5<-sd(o,na.rm=T)/sqrt(length(o))
+
+o <- subset(AVG,LINE=="PI 427106",na.rm=TRUE)
+sePI6<-sd(n,na.rm=T)/sqrt(length(n))
+
+#create data frame for bar chart for OX20-8, PI 427105B, PI 427106
+LesionLengthParents.frame <- data.frame(Genotype = factor(c("Susceptible","Resistant","Resistant"),levels=c("Susceptible","Resistant")),Cultivar = factor(c("OX20-8", "PI 427105B","PI 427106"), levels=c("OX20-8","PI 427105B","PI 427106")),AvgLesion = c(OX,PI5,PI6), se =c(seOX,sePI5,sePI6))
+
+Parentbar = ggplot(LesionLengthParents.frame,aes(Cultivar, AvgLesion, fill=Cultivar))
+limits <- aes(ymax = AvgLesion + se, ymin = AvgLesion - se)
+p<-(Parentbar + stat_summary(fun.y=mean, na.rm=TRUE, geom="bar", position="dodge", colour="black") + geom_errorbar(limits, position = position_dodge(width = 0.9), width = 0.25)  + xlab("Control") + ylab("Avg. Lesion Length (mm)") + scale_fill_manual(values=c("gray18","gray74","white"))+theme(legend.position="none"))
+
+#create data frame for bar chart using alt allele with bars for control genotypes
+LesionLength.frame <- data.frame(Genotype = factor(c("SOX","R105B","SOX","R105B","SOX","R106","SOX","SOX2","R105B","R105B2","R106","R1062"),levels=c("SOX","R105B", "R106")),Family = factor(c("4213","4213","4060","4060","3064","3064","OX20-8","OX20-8","PI 427105B","PI 427105B","PI 427106","PI 427106"), levels=c("4213","4060","3064", "OX20-8","PI 427105B","PI 427106")),AvgLesion = c(28.54,25.04,33.03,23.89,35.30,31.34,OX,-1,PI5,-1,PI6,-1), se =c(se4213OX, se4213PI, se4060OX, se4060PI, se3064OX, se3064PI,seOX,0,sePI5,0,sePI6,0),facet=factor(c("NIL Set","NIL Set","NIL Set","NIL Set","NIL Set","NIL Set","Parental Line","Parental Line","Parental Line","Parental Line","Parental Line","Parental Line"),levels=c("NIL Set","Parental Line")),na.rm=TRUE)
+
+#create data frame for bar chart using alt allele with bars for control genotypes
+LesionLength.frame <- data.frame(Genotype = factor(c("SOX","R105B","2","SOX","R105B","3","SOX","R106","4","SOX","R105B","R106"),levels=c("SOX","R105B", "R106")),Family = factor(c("4213","4213","4213","4060","4060","4060","3064","3064","3064","Parents","Parents","Parents"), levels=c("4213","4060","3064", "Parents")),AvgLesion = c(28.54,25.04,-1,33.03,23.89,-1,35.30,31.34,-1,OX,PI5,PI6), se =c(se4213OX, se4213PI, 0,se4060OX, se4060PI, 0,se3064OX, se3064PI,0,seOX,sePI5,sePI6))
+
+#install ggplot2
+install.packages("ggplot2")
+library(ggplot2)
+theme_set(theme_classic(base_size=8))
+##create bar chart with multiple idependent variables (family and allele)
+
+plot2 <- (ggplot(LesionLength.frame,aes(Family,AvgLesion,fill=Genotype))+geom_col(position=position_dodge2(preserve="single",padding=0),colour="black",width=0.9) + geom_errorbar(limits, position = position_dodge(width = 0.9), width = 0.25) + xlab(" ") + scale_fill_manual(values=c("gray18","gray74","white")) + ylab("Avg. Lesion Length (mm)")+ ylim(0,40)+theme(axis.text.x=element_text(angle=90,hjust=1)))
+
+plot <- (ggplot(LesionLength.frame,aes(Family,AvgLesion,fill=Genotype))+geom_col(position=position_dodge2(preserve="single",padding=0),colour="black",width=0.9) + geom_errorbar(limits, position = position_dodge(width = 0.9), width = 0.25) + xlab(" ") + scale_fill_manual(values=c("gray18","gray74","white")) + ylab("Avg. Lesion Length (mm)")+ facet_grid(. ~ facet, scales="free",space ="free",switch)+ ylim(0,40))+theme(axis.text.x=element_text(angle=90,hjust=1))
+
+ggsave(filename="plot2.jpeg",plot2,dpi=300,width=8.5,height=6,units="cm",path="C:/Users/sverhoff/Desktop")
+
+ggsave(filename="plot.jpeg",plot,dpi=300,width=8.5,height=6,units="cm",path="C:/Users/sverhoff/Desktop")
+
+
