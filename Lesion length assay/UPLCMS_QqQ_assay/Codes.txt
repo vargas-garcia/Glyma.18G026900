@@ -1,0 +1,111 @@
+#Lesion length 2021 SA and JA [ ] experiment (A lower AIC or BIC value indicates a better fit)
+#Set working directory (with ceros)
+setwd("C:/Users/chris/Desktop/Glyma26900_Seq_Alligments_Data/Characterization_ of_G26900/Glyma 26900 Tray Test/Lession Length Data")
+#import csv file
+LesionLength = read.csv("Lession_Lenght_data_FREC_Services.csv", sep=",",header=T)
+#check data
+head(LesionLength)
+tail(LesionLength)
+summary(LesionLength)
+str(LesionLength)
+#change Rep  to factor
+LesionLength$Rep <- factor(LesionLength$Rep,ordered=TRUE)
+#re-check structure of data frame and correct plant 10 
+str(LesionLength)
+#LesionLength$Plant10=as.character(LesionLength$Plant10)
+#LesionLength$Plant10=as.integer(LesionLength$Plant10)
+str(LesionLength)
+#assign variable names for ease of use
+LINE=as.factor(LesionLength$Line)
+ALLELE=as.factor(LesionLength$Allele)
+REP=as.factor(LesionLength$Rep)
+AVG=as.numeric(LesionLength$AvgLL)
+# Load packages for the analysis 
+library(lme4)
+library(lmerTest)
+#Model 
+hist(AVG,breaks = 25, main ="Overall Lesion Length")
+modelA<-lmer(AVG ~ (1|REP)+ALLELE+(1|LINE:ALLELE), REML=FALSE, data= LesionLength)  
+modelA      
+#lsmeans for model A
+difflsmeans(modelA,test.effs="ALLELE")    # significant Pvalues 0.0003377***
+#TTest for significance
+t.test(AVG[ALLELE=="OX"],AVG[ALLELE=="PI105B"],na.rm=T,data=LesionLength)  #p-value 4.775x10-6 ***
+t.test(AVG[LINE=="OX20-8"],AVG[LINE=="PI427105B"],na.rm=T,data=LesionLength)
+anova(modelA)   
+ranova(modelA)      
+rand(modelA)
+# Calculates Least Squares Means and Confidence Intervals For The Factors Of my Fixed Part Of my Mixed Effects Model, in this case ALLELEOX    and   ALLELEPI105B.
+lsmeansLT(modelA) 
+#    Performs Backward Elimination Of Non-Significant Effects Of Linear Mixed Effects Model. In this case tells you that LINE is still not significant.  For fix effect ( P-Value = F test based on Sattethwaite's or Kenward-Roger) For random effect (P-Value is based on likelihood ratio)
+step(modelA)
+#Summary for entire model A
+summary(modelA)
+#summarize data by using doBy function 
+library(doBy)
+lldata<-summaryBy(AVG ~ (1|LINE) + (1|REP) + Allele ,data=LesionLength,FUN=c(length ,mean,sd))
+lldata
+str(lldata)
+#calculate standard error (<NA> are the parents Checks) #Parents are mixed in this code 
+#lldata$AVG.se<-lldata$AVG.sd/sqrt(lldata$AVG.length)
+#To see Average Variance By Rep (Partitioning)
+ldata1<-summaryBy(AVG ~ Rep ,data=LesionLength,FUN=c(length ,mean,sd,var))
+lldata1
+#To see Variance within Rep Components (Need to separate the parents since they are together) 
+lldata2<-summaryBy(AVG ~ Allele + Rep,data=LesionLength,FUN=c(length ,mean,sd,var))
+lldata2
+#mean disease progress by allele
+mean(AVG[ALLELE=="PI105B"],na.rm=T)
+mean(AVG[ALLELE=="OX"],na.rm=T)
+mean(AVG[LINE=="PI427105B"],na.rm=T)
+mean(AVG[LINE=="OX20-8"],na.rm=T)
+#histogram of lesion length by allele
+hist(AVG[ALLELE=="PI105B"],xlab="Lesion Length",main="Allele PI105B Pathogen Spread",col=3)
+hist(AVG[ALLELE=="OX"],xlab="Lesion Length",main="Allele OX Pathogen Spread",col=4)
+hist(AVG)
+#create data summary using aggreate 
+x<-(aggregate(LesionLength[15],list(LINE=LINE,ALLELE=ALLELE),mean))
+x
+#subset data and Calculate standard error for Alleles OX and PI105B
+x <- subset(AVG,ALLELE=="OX",na.rm=TRUE)
+y <- subset(AVG,ALLELE=="PI105B",na.rm=TRUE)
+semOX<-sd(x,na.rm=T)/sqrt(length(x))
+semPI105B<-sd(y,na.rm=T)/sqrt(length(y))
+#subset data and Calculate standard error for the Checks or parrents
+PI<-subset(AVG,LINE=="PI427105B",na.rm=TRUE)
+OX<-subset(AVG,LINE=="OX20-8",na.rm=TRUE)
+semPI427105B<-sd(PI,na.rm=T)/sqrt(length(PI))
+semOX208<-sd(OX,na.rm=T)/sqrt(length(OX))
+#boxplot to visualize data
+boxplot(AVG~ALLELE,na.rm=t, xlab="Allele", ylab="Average Lesion Length (mm)", main="Pathogen Spread", col=(values=c("blue", "orange")))
+#create data frame for bar for Introgression (all lines)
+LesionLength.frame <- data.frame(Introgression =factor(c("Susceptible","Resistant"),levels=c("Susceptible","Resistant")),AvgLesion = c(29.43333, 13.9), se =c(semOX,semPI105B))  
+LesionLength.frame
+#for parents OX20-8 and PI 427105B (Plat Introduction “Source”)
+LesionLength2.frame <- data.frame(Line = factor(c("OX 20-8","PI 427105B")),AvgLesion = c(43.3, 19.833), se =c(semOX208,semPI427105B))
+LesionLength2.frame
+#create limits for error bars
+library(ggplot2)
+library(ggsignif)
+Limits1 <-aes(ymax =  AvgLesion + se, ymin = AvgLesion - se)
+theme_set(theme_classic(base_size=20))
+# Bar chart for introgression 
+p<-ggplot(LesionLength.frame,aes(Introgression,AvgLesion,fill=Introgression))+ stat_summary(fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar(Limits1, position = position_dodge(width = 0.9), width = 0.25,size=0.9) + scale_fill_manual(values=c("gray25","white")) + xlab("Introgression") + ylab("Average Lesion Length (mm)") + theme(plot.title = element_text(hjust = 0.5)) + ylim(0,40) + theme(legend.position="none") + ggtitle("NIL Family 4213 Tray Test (SA & JA [ ] Exp)") + theme(plot.title = element_text(hjust = 0.5))
+p
+#add significance based on LSmeans
+p + geom_text(x = 1.5,y = 35,label="***",size=20)
+#p + geom_signif(y_position=c(45), xmin=c(1), xmax=c(2),size=0.9,annotation=c("***"))
+# Bar chart for Plant introduction (Source=Parents)
+theme_set(theme_classic(base_size=20))
+q<-ggplot(LesionLength2.frame,aes(Line,AvgLesion,fill=Line))+ stat_summary(fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar(Limits1, position = position_dodge(width = 0.9), width = 0.25,size=0.9) + scale_fill_manual(values=c("gray25","white")) + xlab("Plant Introduction") + ylab("Average Lesion Length (mm)") + theme(plot.title = element_text(hjust = 0.5)) + ylim(0,60) + theme(legend.position="none") + ggtitle("NIL Family 4213 Tray Test Parents (SA & JA [ ] Exp)") + theme(plot.title = element_text(hjust = 0.5))
+q
+#No significance 
+t.test(AVG[LINE=="OX20-8"],AVG[LINE=="PI427105B"],na.rm=T,data=LesionLength)
+
+
+# high quality figure to publish 
+p<-ggplot(LesionLength.frame,aes(Introgression,AvgLesion,fill=Introgression))+ stat_summary(fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar(Limits1, position = position_dodge(width = 0.9), width = 0.25,size=0.9) + scale_fill_manual(values=c("gray25","white")) + xlab("Introgression") + ylab("Average Lesion Length (mm)") + theme(plot.title = element_text(hjust = 0.5)) + ylim(0,40) + theme(legend.position="none")
+p
+p2=p + geom_text(x = 1.5,y = 35,label="***",size=20)
+library(ggplot2)
+ggsave(filename="Lesion_Length_SA&JA_Publicable.jpeg",p2,dpi=300,width = 180,height = 204.8,units = "mm")
