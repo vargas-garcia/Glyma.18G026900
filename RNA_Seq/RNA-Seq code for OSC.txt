@@ -1,0 +1,145 @@
+
+rm #code from using OSC
+*************************************************************
+#SSH to oakley.osc.edu using PuTTY and log into account 
+#make subdirectories in home directory
+mkdir -p RNA-Seq/Reference/Genome
+mkdir -p RNA-Seq/Reference/Annotation
+mkdir -p RNA-Seq/RAW_Data
+mkdir -p RNA-Seq/Adapters
+mkdir -p RNA-Seq/Fastqc_Out
+mkdir -p RNA-Seq/Adapter_Removed
+mkdir -p RNA-Seq/QC/Trimmed 
+mkdir -p RNA-Seq/Alignment/Tophat2
+
+*************************************************************
+
+#INSTALL SOFTWARE
+-p $HOME/local/src $HOME/local/share/lmodfiles	#recommended directory set up by OSC
+cd $HOME/local/src
+#download fastqc .zip file to computer then uploaded to $HOME/local/src using CyberDuck
+unzip [file.zip]
+cd $HOME/local/src/FastQC
+chmod a+x ./fastqc
+git clone https://github.com/najoshi/scythe.git
+cd scythe
+make
+ls -ls
+git clone https://github.com/najoshi/sickle.git
+cd sickle
+make 
+ls -ls
+wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
+tar -xvf tophat-2.1.0.Linux_x86_64.tar.gz
+cd tophat-2.1.0.Linux_x86_64
+./tophat2
+
+#COPY DATA TO OAKLEY (PROJECT SPACE)
+scp -r ~/RNA-Seq/RAW_Data/graham2/Lane8/ osu8109@oakley.osc.edu:/fs/project/PAS1051/graham2
+
+#UNZIP FILES
+gzip -d file.fastq.gz
+
+#RUN FASTQC ON 2 SAMPLES/LANE TO CHECK QUALITY
+ ~/local/src/FastQC/fastqc file.fastq file.fastq -outdir ~/RNA-Seq/QC/Fastqc_Out/
+xdg-open file.html #to view in linux
+#or use cyberduck to copy html files to computer and view on web browser
+
+#ADAPT TRIMMERS WITH SCYTHE
+for f in /fs/project/PAS1051/Karhoff_RNASeq/Lane7/*.fastq; do ~/local/src/scythe/scythe -a ~/local/src/scythe/truseq_adapters.fasta -q sanger  -o /fs/project/PAS1051/Karhoff_RNASeq/Adapter_Removed/Adapt_rem_${f##*/}   $f  ;done
+
+#FASTX_TRIMMER TO REMOVE FIRST 15 BASES OF EACH READ (SEQUENCING ARTIFACT)
+for i in /fs/project/PAS1051/Karhoff_RNASeq/Adapter_Removed/*.fastq
+do
+        ~/local/src/bin/fastx_trimmer -Q33 -f 15 -i $i -o $i.trimmed.fastq
+done
+
+#REMOVE SCYTHE OUTPUT TO INCREASE ROOM 
+rm *.fastq #make sure you have correct directoy and extension when using wildcard!!
+
+#SICKLE FOR QUALITY TRIMMING
+for f in /fs/project/PAS1051/Karhoff_RNASeq/Fastx_trimmer/*.fastq; do ~/local/src/sickle/sickle se -q 20  -t sanger  -f $f -o /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Q_trimmed_${f##*/} ; done
+
+#RUN FASTQC AGAIN TO RE-CHECK QUALITY (see code above)
+
+#GET SOYBEAN REFERENCE GENOME FROM PHYTOZOME
+#downloaded bowtie2 and uploaded via Cyberduck
+unzip bowtie2-2.3.0-source.zip
+cd bowtie2-2.3.0-source.zip
+make NO_TBB=1 #because couldn't download TBB use phread library instead
+
+#uploaded Gmax_275_v2.0.fa.gz to cyberduck after downloading from JGI Genome Portal (phytozome -> bulk data)
+cd ~/RNA-Seq/Reference/Genome/
+gzip -d Gmax_275_v2.0.gz
+
+#INDEX GENOME
+~/local/src/tophat-2.1.0.Linux_x86_64/bowtie2-build ~/RNA-Seq/Reference/Genome/Gmax_275_v2.0.fa ~/RNA-Seq/Reference/Genome/Gmax_275_v2.0
+
+#ALIGN SHORT READS TO W82 GENOME USING TOPHAT2
+#move bowtie2 directory to tophat2 directory on ~/local/src so it can be found!
+for f in /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/*.fastq; do  ~/local/src/tophat-2.1.0.Linux_x86_64/tophat2 --num-threads 4  --output-dir RNA-Seq/Alignment/${f##*/} RNA-Seq/Reference/Genome/Gmax_275_v2.0  $f; done
+
+#Installing HTSeq
+download source or use wget
+tar -xvzf "file".gz
+cd "directory created after unzipping tarball"
+#NEED TO BE ON OWENS CLUSTER
+module load python/2.7
+pip install --user HTSeq
+pip install --user numpy upgrade
+
+#GET COUNTS FROM HTSeq COUNT
+for f in ~/RNA-Seq/Counts/*.bam; do python -m HTSeq.scripts.count -f bam -t gene -i Name  $f ~/RNA-Seq/Reference/Annotation/Gmax_275_Wm82.a2.v1.gene.gff3 > /fs/project/PAS1051/Karhoff_RNASeq/Alignment/Counts/${f##*/}.counts;  2>>std_err.err; done
+
+#merge .count files
+FILES=$(ls -t -v *.counts | tr '\n' ' ');
+
+awk 'NF > 1{ a[$1] = a[$1]"\t"$2} END {for( i in a ) print i a[i]}' $FILES > Total_Counts.txt
+
+
+#1) to use copy your count directory (just in case something goes wrong) 
+cp ~/RNA-Seq/CountFiles/*.counts ~/RNA-Seq/CountFiles/CountsCopied
+#2) move into the copied directory directory 
+#3) enter script above
+#4) download file using Cyberduck
+
+#using vim to make text file containing job scriptsrc
+vim
+#I for insert mode
+#press ESC then :w to write file name and then :q! to exit vim 
+#submit batch
+#PBS -l walltime=04:00:00
+
+#PBS -l nodes=1:ppn=12
+
+#PBS -A PAS1051
+#PBS -m ae #this tells it to e-mail when job aborts or finishes
+
+
+#########################################################################
+
+Example of batch to be submitted:
+
+#PBS -l walltime=24:00:00
+#PBS -l nodes=1:ppn=28
+#PBS -A PAS1051
+#PBS -m ae
+
+cd ~/RNA-Seq/BamFiles/*.bam
+
+mv ~/RNA-Seq/BamFiles/*.bam /fs/project/PAS1051/Karhoff_RNASeq/Alignment/Bamfiles
+
+
+************************************************************
+
+#other useful commands
+#"Ctrl-A" and "d" to detach the screen 
+screen -r [screen ID] # to reattach screen
+screen -ls #to see screens available (if running more than one)
+screen -S sessionname -p 0 -X quit #to kill screen
+ls -lh #to view human readable file sizes
+
+
+
+
+

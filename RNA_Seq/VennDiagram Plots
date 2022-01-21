@@ -1,0 +1,215 @@
+library(VennDiagram)
+
+#set directory
+setwd("C:/Users/sverhoff/Dropbox/Dissertation Work/RNA-Seq/EdgeR/Output_glmTreat_noPvalue_SigResults")
+
+#Venn diagram for DEG PI vs OX inoculated
+Data3<-read.csv(file="3hpiIvI sig results.csv", header=TRUE, sep=",")
+Data24<-read.csv(file="IvI24.csv", header=TRUE, sep=",")
+Data48<-read.csv(file="IvI48.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id))
+overlap
+venn.diagram((x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id)),
+	filename = "PIvsOXInocAllTimepoints.tiff",
+	col = "transparent",
+	fill = c("red", "blue", "green"),
+	alpha = 0.5,
+	label.col = c("darkred", "white", "darkblue", "white", "white", "white", "darkgreen"),
+	cex = 1.5,
+	fontfamily = "san serif",
+	cat.default.pos = "text",
+	cat.col = c("darkred", "darkblue", "darkgreen"),
+	cat.cex = 2.0,
+	cat.fontfamily = "sans serif",
+	cat.dist = c(0.06, 0.06, 0.06),
+	cat.pos = 0,
+	scaled = TRUE
+	);
+
+#Venn diagram for DEG PI vs OX inoculated -upregulated genes only
+Data3<-read.csv(file="3hpiIvI sig results_uregulated2.csv", header=TRUE, sep=",")
+Data24<-read.csv(file="IvI24_upregulated.csv", header=TRUE, sep=",")
+Data48<-read.csv(file="IvI48_upregulated.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id))
+overlap
+venn.diagram((x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id)),
+              resolution = 300,
+              filename = "PIvsOXInocAllTimepoints_upregulated.jpeg",
+              col = "transparent",
+              fill = c("red", "blue", "green"),
+              alpha = 0.5,
+              label.col = c("darkred", "white", "darkblue", "white", "white", "white", "darkgreen"),
+              cex = 2.5,
+              fontfamily = "sans serif",
+              fontface = "bold",
+              cat.default.pos = "text",
+              cat.col = c("darkred", "darkblue", "darkgreen"),
+              cat.cex = 2.5,
+              cat.fontfamily = "sans serif",
+              cat.fontface = "bold",
+              cat.dist = c(0.06, 0.12, 0.09),
+              cat.pos = c(283,90,0),
+              scaled = TRUE
+ );
+
+
+ #Venn diagram for DEG PI vs OX inoculated -downregulated genes only
+Data3<-read.csv(file="3hpiIvI sig results_downregulated.csv", header=TRUE, sep=",")
+Data24<-read.csv(file="IvI24_downregulated.csv", header=TRUE, sep=",")
+Data48<-read.csv(file="IvI48_downregulated.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id))
+overlap
+venn.diagram((x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id)),
+              resolution = 300,
+              filename = "PIvsOXInocAllTimepoints_downregulated.jpeg",
+              col = "transparent",
+              fill = c("red", "blue", "green"),
+              alpha = 0.5,
+              label.col = c("darkred", "white", "darkblue", "white", "white", "white", "darkgreen"),
+              cex = 2.5,
+              fontfamily = "sans serif",
+              fontface = "bold",
+              cat.default.pos = "text",
+              cat.col = c("darkred", "darkblue", "darkgreen"),
+              cat.cex = 2.5,
+              cat.fontfamily = "sans serif",
+              cat.fontface="bold",
+              cat.dist = c(0.06, 0.06, 0.06),
+              cat.pos = c(270,90,0),
+              scaled = TRUE
+ );
+ 
+#Venn diagram for DEG PI vs OX mock - upregulated genes only
+Data24<-read.csv(file="24hpiMvMsig results_upregulated.csv", header=TRUE, sep=",")
+Data48<-read.csv(file="48hpiMvMsig results_upregulated.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("24 hai"=Data24$id,"48 hai"=Data48$id))
+overlap
+venn.diagram((x=list("24 hai"=Data24$id,"48 hai"=Data48$id)),
+              resolution = 300,
+              filename = "PIvsOXMockAllTimepoints_upregulated.jpeg",
+              col = "transparent",
+              fill = c("blue", "green"),
+              alpha = 0.5,
+              label.col = c("darkblue", "darkblue", "darkgreen"),
+              cex = 2.5,
+              fontfamily = "sans serif",
+              fontface = "bold",
+              cat.default.pos = "text",
+              cat.col = c("darkblue", "darkgreen"),
+              cat.cex = 2.5,
+              cat.fontfamily = "sans serif",
+              cat.fontface="bold",
+              cat.dist = c(0.06, 0.06),
+              cat.pos = c(-10,-10),
+              scaled = TRUE
+ );
+	
+#Venn diagram for DEG PI vs OX mock
+Data3<-read.csv(file="3hpiMvM sig results.csv", header=TRUE, sep=",")
+Data24<-read.csv(file="MvM24.csv", header=TRUE, sep=",")
+Data48<-read.csv(file="MvM48.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id))
+overlap
+venn.diagram((x=list("3 hai"=Data3$id,"24 hai"=Data24$id,"48 hai"=Data48$id)),
+	filename = "PIvsOXMockAllTimepoints.tiff",
+	col = "transparent",
+	fill = c("red", "blue", "green"),
+	alpha = 0.5,
+	label.col = c("darkred", "white", "darkblue", "white", "white", "white", "darkgreen"),
+	cex = 1.5,
+	fontfamily = "serif",
+	fontface = "bold",
+	cat.default.pos = "text",
+	cat.col = c("darkred", "darkblue", "darkgreen"),
+	cat.cex = 1.5,
+	cat.fontfamily = "serif",
+	cat.dist = c(0.06, 0.08, 0.06),
+	cat.pos = 0,
+	scaled = TRUE
+	);
+
+#Venn diagram for DEG mock vs. inoc 3hai
+PI<-read.csv(file="IvM.Res.3hpi.csv", header=TRUE, sep=",")
+OX<-read.csv(file="IvM.Sus.3hpi.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("Resistant Allele"=PI$id,"Susceptible Allele"=OX$id))
+overlap
+venn.diagram(
+	x = list(
+		"Res. Allele" = PI$id,
+		"Sus. Allele" = OX$id
+		),
+	filename = "MvI3hai.tiff",
+	col = "transparent",
+	fill = c("red", "green"),
+	alpha = 0.5,
+	label.col = c("darkred","white","darkgreen"),
+	cex = 1.5,
+	fontfamily = "serif",
+	fontface = "bold",
+	cat.col = c("darkred","darkgreen"),
+	cat.cex = 1.5,
+	cat.fontfamily = "serif",
+	cat.dist = c(0.03, -0.03),
+	cat.pos = 0,
+	scaled = TRUE
+	);
+
+#Venn diagram for DEG mock vs. inoc 24hai
+PI<-read.csv(file="IvM24Res.csv", header=TRUE, sep=",")
+OX<-read.csv(file="IvM24Sus Susceptible Allele logfc threshold.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("Resistant Allele"=PI$id,"Susceptible Allele"=OX$id))
+overlap
+venn.diagram(
+	x = list(
+		"Res. Allele" = PI$id,
+		"Sus. Allele" = OX$id
+		),
+	filename = "MvI24hai.tiff",
+	col = "transparent",
+	fill = c("red", "green"),
+	alpha = 0.5,
+	label.col = c("darkred","white","darkgreen"),
+	cex = 1.5,
+	fontfamily = "serif",
+	fontface = "bold",
+	cat.col = c("darkred","darkgreen"),
+	cat.cex = 1.5,
+	cat.fontfamily = "serif",
+	cat.dist = c(0.02, 0.04),
+	cat.pos = 0,
+	scaled = TRUE
+	);
+
+#Venn diagram for DEG mock vs. inoc 48hai
+PI<-read.csv(file="IvM48Res.csv", header=TRUE, sep=",")
+OX<-read.csv(file="IvM48Sus.csv", header=TRUE, sep=",")
+
+overlap<-calculate.overlap(x=list("Resistant Allele"=PI$id,"Susceptible Allele"=OX$id))
+overlap
+venn.diagram(
+	x = list(
+		"Res. Allele" = PI$id,
+		"Sus. Allele" = OX$id
+		),
+	filename = "MvI48hai.tiff",
+	col = "transparent",
+	fill = c("red", "green"),
+	alpha = 0.5,
+	label.col = c("darkred","white","darkgreen"),
+	cex = 1.5,
+	fontfamily = "serif",
+	fontface = "bold",
+	cat.col = c("darkred","darkgreen"),
+	cat.cex = 1.5,
+	cat.fontfamily = "serif",
+	cat.dist = c(0.03, 0.04),
+	cat.pos = 0,
+	scaled = TRUE
+	);

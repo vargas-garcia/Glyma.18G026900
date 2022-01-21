@@ -1,0 +1,376 @@
+#Stephanie Karhoff October 2018
+#De novo transcriptome assembly using Trinity on the Ohio Supercomputer Owens Cluster
+#Code based on https://github.com/trinityrnaseq/trinityrnaseq/wiki
+#three major steps are: 
+#1.)inchworm - decompose all reads to overlapping Kmers
+#2.)chrysalis - re-groups related inchworm contigs and builds de Bruijn graph
+#3.)butterfly - compacts graphs and reports most probable path through graphs
+
+############################
+#download software
+$HOME/local/src $HOME/local/share/lmodfiles	#recommended directory set up by OSC
+cd $HOME/local/src
+#download fastqc .zip file to computer then uploaded to $HOME/local/src using CyberDuck
+unzip trinityrnaseq-Trinity-v2.8.4.zip
+cd ~/local/src/trinityrnagseq-Trinity-v2.8.4/
+module load cmake/3.11.4 #if you get the error that CMake 3.1 or higher is required and on Owens cluster
+make
+make plugins
+
+#load modules needed to run trinity (do every session)
+module load bowtie2 #available software on Owens
+module load samtools #available software on Owens
+
+#install jellyfish from http://www.genome.umd.edu/jellyfish.html
+mkdir -p ~/local/jellyfish/2.2.10
+cd ~/local/src
+tar -xzf jellyfish-2.2.10.tar.gz
+cd jellyfish-2.2.10
+autoconf # this creates the configure file
+./configure --prefix=$HOME/local/jellyfish/2.2.10 CC=icc CFLAGS=-static-intel #code from OSC HOWTO:  Locally Installing Software
+make && make install
+PATH=$HOME/local/jellyfish/2.2.10/bin/:$PATH #so Trinity can find jellyfish
+
+#install newer version of salmon (version available on Owens is too old for Trinity)
+#download from https://github.com/COMBINE-lab/salmon/releases
+mkdir -p ~/local/salmon/0.11.3
+tar -xzf salmon-0.11.3-linuxx86_64.tar.gz
+cd salmon-0.11.3-linuxx86_64
+mv * ~/local/salmon/0.11.3
+PATH=$HOME/local/salmon/0.11.3/bin/:$PATH #so Trinity can find jellyfish
+##########################
+
+#########################
+#sub-sampling .fastq files with seqtk to reduce computing resources needed to run 180 samples through trinity
+#install seqtk
+git clone https://github.com/lh3/seqtk.git
+cd seqtk
+make
+
+#get total number of reads, their mean and SD overall
+awk 'BEGIN { t=0.0;sq=0.0; n=0;} ;NR%4==2 {n++;L=length($0);t+=L;sq+=L*L;}END{m=t/n;printf("total %d avg=%f stddev=%f\n",n,m,sq/n-m*m);}'  *.fastq
+
+#get number of reads per sample
+echo$(cat /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Q_trimmed_Adapt_rem_SK1_S49_L005_R1_001.fastq.trimmed.fastq|wc -l)/4|bc
+
+#subsample reads from fastq file
+~/local/src/seqtk/seqtk sample -s100 /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Q_trimmed_Adapt_rem_SK1_S49_L005_R1_001.fastq.trimmed.fastq 10000 > /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/Sub_SK1_S49_L005_R1_001.fastq
+##########################
+
+##########################
+#example of samples file
+#cond_A		cond_A_line_20_rep_1	Sub_SK31_S79_L007_R1_001.fastq
+#cond_A		cond_A_line_20_rep_2	Sub_SK97_S94_L008_R1_001.fastq
+#cond_A		cond_A_line_20_rep_3	Sub_SK169_S7_L001_R1_001.fastq
+#cond_A		cond_A_line_32_rep_1	Sub_SK32_S80_L007_R1_001.fastq
+#cond_A		cond_A_line_32_rep_2	Sub_SK98_S95_L008_R1_001.fastq
+#cond_A		cond_A_line_32_rep_3	Sub_SK170_S8_L001_R1_001.fastq
+#upload file via Cyberduck before running trinity
+##########################
+
+##########################
+#Submitting OSC job
+vim "file name"
+#I to insert
+#Esc w : to write file name
+#:q! to exite file
+
+#example of job file for Owens (28 clusters per node; Trinity for me required using hugememory at 48 clusters per node):
+
+#PBS -l walltime=168:00:00  #setting max time
+#PBS -l nodes=1:ppn=28	    #setting no. of nodes	
+#PBS -A PAS1051		    #specifying project ID	
+#PBS -m ae                  #will e-mail when completed; default is only if it fails (i.e. exit status = not 0)
+cd /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output
+module load bowtie2
+module load samtools
+PATH=$HOME/local/jellyfish/2.2.10/bin/:$PATH
+PATH=$HOME/local/salmon/0.11.3/bin/:$PATH
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Trinity --seqType fq --max_memory 100G --samples_file /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/1.5million/Samples1.5million.txt --CPU 28
+
+#qsub "file" #to submit job
+#qstat -u osu8109 #to check progress of OSC job
+#or can check active jobs on ondemand.osc.edu
+##########################
+
+##########################
+#to run steps separately
+
+ # just run the initial in silico normalization step and kmer counting:
+ Trinity (opts) --no_run_inchworm
+
+
+ # run inchworm, stop before chrysalis
+ Trinity (opts) --no_run_chrysalis
+
+ # run chrysalis, stop before Trinity phase 2 parallel assembly of clustered reads
+ Trinity (opts) --no_distributed_trinity_exec
+
+ # finish the job, running all Phase 2 mini-assemblies in parallel:
+ Trinity (opts)
+##########################
+#checking quality of Trinity output
+head Trinity.fasta
+
+#assembly quality assessment
+#RNA-Seq read representation of the assembly
+module load bowtie2
+module load samtools
+bowtie2-build Trinity.fasta Trinity.fasta #need to first build a bowtie2 index for the transcriptome
+bowtie2 -p 10 -q --no-unal -k 20 -x Trinity.fasta -U /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/Sub_SK1_S49_L005_R1_001.fastq \
+     2>align_stats.txt| samtools view -@10 -Sb -o bowtie2.bam 
+cat 2>&1 align_stats.txt
+
+#counting full length transcripts
+#downloaded SwiisProt database .fast file from https://github.com/trinityrnaseq/trinityrnaseq/wiki/Counting-Full-Length-Trinity-Transcripts
+#uploaded to trinity output directory using cyberduck
+module load blast
+makeblastdb -in uniprot_sprot.fasta -dbtype prot #build a blastable database
+#perform the blast search, reporting only the top alignment
+blastx -query Trinity.fasta -db uniprot_sprot.fasta -out blastx.outfmt6 -evalue 1e-20 -num_threads 6 -max_target_seqs 1 -outfmt 6
+#examine the percent of the target being aligned to by the best matching Trinity transcript 
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/analyze_blastPlus_topHit_coverage.pl blastx.outfmt6 Trinity.fasta uniprot_sprot.fasta
+
+#compare sequences to predicted Arabidopsis proteins (TAIR version 10) with BLASTX to assign function
+module load blast 
+makeblastdb -in TAIR10_pep_20101214.txt -dbtype prot
+blastx -query /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta -db TAIR10_pep_20101214.txt -out blastx2.outfmt6 \
+        -evalue 1e-20 -num_threads 6 -max_target_seqs 1 -outfmt 6
+
+#compare sequences to predicted soybean transcripts in version Williams82.a2.v1 with BLASTN to assign function
+#downloaded Gmax_275_Wm82.a2.v1.transcript.fa.gz from Phytozome bulk data
+#uploaded via Cyberduck
+gunzip Gmax_275_Wm82.a2.v1.transcript.fa.gz
+makeblastdb -in Gmax_275_Wm82.a2.v1.transcript.fa -dbtype nucl
+blastn -query /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta -db Gmax_275_Wm82.a2.v1.transcript.fa -out blastn.outfmt6 \
+        -evalue 1e-20 -num_threads 6 -max_target_seqs 1 -outfmt 6
+blastn -help #to get description of tab-delimited output format
+examine the percent of the target being aligned to by the best matching Trinity transcript 
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/analyze_blastPlus_topHit_coverage.pl blastn.outfmt6 /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta  Gmax_275_Wm82.a2.v1.transcript.fa
+#hit_pct_cov_bin        count_in_bin    >bin_below
+#100     		17882   	17882
+#90      		4158    	22040
+#80      		3679    	25719
+#70      		3908    	29627
+#60      		3990    	33617
+#50      		3737    	37354
+#40      		3994    	41348
+#30      		4667    	46015
+#20      		5898    	51913
+#10      		5158    	57071
+
+#group blast hits to improve sequence coverage
+#Group the multiple HSPs per transcript/database_match pairing like so:
+
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/misc/blast_outfmt6_group_segments.pl \
+      blastn.outfmt6  /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta  Gmax_275_Wm82.a2.v1.transcript.fa > blastn.outfmt6.grouped
+#Then compute the percent coverage by length histogram like so
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/misc/blast_outfmt6_group_segments.tophit_coverage.pl blastn.outfmt6.grouped
+#hit_pct_cov_bin        count_in_bin    >bin_below
+#100     		20046   	20046
+#90      		4301    	24347
+#80      		3386    	27733
+#70      		3401    	31134
+#60      		3415    	34549
+#50      		3357    	37906
+#40      		3782    	41688
+#30      		4568    	46256
+#20      		6038    	52294
+#10      		4777    	57071
+############################
+
+############################
+#Estimate transcript abundance with alignment based method RSEM
+#downloaded RSEM v1.3.1 at https://deweylab.github.io/RSEM/ and uploaded via cyberduck
+tar -xzf RSEM-1.3.1.tar.gz
+cd RSEM-1.3.1/
+make
+PATH=$HOME/local/RSEM/1.3.1/:$PATH 
+module load bowtie2 
+module load samtools
+module load express
+#prepare reference for alignment and abundance estimation
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta --est_method RSEM --aln_method bowtie2 --trinity_mode --prep_reference
+#run alignment and abundance estimation
+#note - I had to move .fastq files into trinity output directory so it could find the files in samples_file
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta --seqType fq --samples_file /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/SubSamples2.txt --est_method RSEM --aln_method bowtie2 --gene_trans_map /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta.gene_trans_map --output_dir rsem_outdir
+
+#build transcript and gene expression matrices
+#had to first convert quant_files.txt to unix format due to uneven line lengths in dos format
+dos2unix quant_files.txt #make sure there isn't an empty line after last path 
+#need to load R in OSC and install edgeR package 
+module load R
+R
+install.packages("edgeR")
+yes
+#now build transcript expression matrices with isoform files
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta.gene_trans_map --name_sample_by_basedir --out_prefix isoforms --quant_files /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/quant_files.txt 
+#counts.matrix files are used for differential gene expression analysis
+
+#############################
+
+#############################
+#Differential gene expression analysis using EdgeR within Trinity toolkit
+#install required R packages 
+module load R
+R
+source("http://bioconductor.org/biocLite.R")
+biocLite('edgeR')
+biocLite('limma')
+biocLite('DESeq2')
+biocLite('ctc')
+biocLite('Biobase')
+install.packages('gplots')
+install.packages('ape')
+
+#add trinotate results to matrix beforehand (see below)
+#do with both isoforms and genes matrices 
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl \
+	--matrix /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Genes.counts.matrix \
+	--method edgeR \
+	--samples_file /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Samples3.txt \
+	--contrasts /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/contrasts.txt \
+	--output edgeRgenesNoAnnot
+
+#extract differentially expressed transcripts abs(logFC) greater than 2 and FDR less than 0.05
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/Trinity_trans.genes.counts.wAnnot.matrix -P 5e-2 -C 2 --samples /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Samples3.txt #default is 10000 and > than that will take awhile
+#generates two files per comparison - feature upregulated in sampleA and upregulated in sampleB
+#following summary files:
+	#All features found DE in any pairwise comparison consolidates into a single expression matrix
+	#Pearson correlation matrix for pairwise sample comparisons based on this set of DE features
+	#clustered heat map if less than 10000 DE features
+
+#partition genes/features into clusters
+#used recommended method: cut the hierarchically clustered gene tree at --Ptree percent height of the tree
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/define_clusters_by_cutting_tree.pl \
+                                    -R  diffExpr.P5e-2_C2.matrix.RData --Ptree 60
+
+#generate supertranscripts to get gene-like view for variant calling 
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/SuperTranscripts/Trinity_gene_splice_modeler.py \
+       --trinity_fasta /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta
+
+#variant calling with supertranscripts using GATK pipeline available in Trinity
+#require Picard, GATK v3.8, samtools, and STAR aligner
+module load star
+module load samtools
+export PICARD_HOME=/users/PAS1051/osu8109/local/picard/2.18.20/
+export GATK_HOME=/users/PAS1051/osu8109/local/GATK/3.8.0/
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/SuperTranscripts/AllelicVariants/run_variant_calling.py \
+	 --st_fa /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/edgeR.157101.dir/trinity_genes.fasta \
+           --st_gtf /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/edgeR.157101.dir/trinity_genes.gtf \
+           -s /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/<FILE> \
+           -o variant_calls_outdir \
+ 	   -m 133459983744 
+
+##################################
+
+##################################
+#Auotomated functional annotation with Trinotate 
+#download trinotate, transdecoder, SQLite, and HMMER and compiled from source
+module load blast #already available on Owens cluster
+export HMMER_HOME=/users/PAS1051/osu8109/local/hmmer/3.2.1/
+export SQLITE_HOME=/users/PAS1051/osu8109/local/sqlite/3260000/
+export TRANSDECODER_HOME=/users/PAS1051/osu8109/local/transdecoder/	#version 5.5.0
+export TRINOTATE_HOME=/users/PAS1051/osu8109/local/trinotate/	#version 3.1.1
+
+#load required sequence databases
+~/local/trinotate/admin/Build_Trinotate_Boilerplate_SQLite_db.pl  Trinotate
+#prepare protein database for blast search
+makeblastdb -in uniprot_sprot.pep -dbtype prot
+#uncompress and prepare PFAM database for use with 'hmmscan'
+gunzip Pfam-A.hmm.gz
+~/local/hmmer/3.2.1/bin/hmmpress ~/local/trinotate/Pfam-A.hmm
+#get Trinity.fasta.transdecoder.pep/most likely longest ORF peptide candidates file needed for sequence analyses
+~/local/transdecoder/TransDecoder.LongOrfs -t /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta
+#predict the likely coding regions
+~/local/transdecoder/TransDecoder.Predict -t /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta
+#blast commands
+cd /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/ cd /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/
+#search Trinity transcripts
+blastx -query /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta -db ~/local/trinotate/uniprot_sprot.pep -num_threads 28 -max_target_seqs 1 -outfmt 6 -evalue 1e-3 > blastx.outfmt6
+#search Trinity proteins
+blastp -query ~/Trinity.fasta.transdecoder.pep -db ~/local/trinotate/uniprot_sprot.pep -num_threads 28 -max_target_seqs 1 -outfmt 6 -evalue 1e-3 > blastp.outfmt6
+#run hmmer to identify protein domains
+~/local/hmmer/3.2.1/bin/hmmscan --cpu 28 --domtblout TrinotatePFAM.out ~/local/trinotate/Pfam-A.hmm ~/Trinity.fasta.transdecoder.pep > pfam.log
+
+#load generated results into a trinotate SQLite database and generate output annotation report
+#generate file for gene/transcript relationships
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/support_scripts/get_Trinity_gene_to_trans_map.pl /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta >  Trinity.fasta.gene_trans_map
+#now load transcripts and coding regions
+~/local/trinotate/Trinotate ~/local/trinotate/Trinotate.sqlite init --gene_trans_map /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/Trinity.fasta.gene_trans_map --transcript_fasta /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta --transdecoder_pep /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/Trinity.fasta.transdecoder.pep
+#load blast homologies
+~/local/trinotate/Trinotate ~/local/trinotate/Trinotate.sqlite LOAD_swissprot_blastp blastp.outfmt6	
+~/local/trinotate/Trinotate ~/local/trinotate/Trinotate.sqlite LOAD_swissprot_blastx blastx.outfmt6
+#load PFAM domain entries
+~/local/trinotate/Trinotate ~/local/trinotate/Trinotate.sqlite LOAD_pfam TrinotatePFAM.out
+#output an annotation report
+~/local/trinotate/Trinotate ~/local/trinotate/Trinotate.sqlite report > trinotate_annotation_report.xls	
+#output has following headings
+#0       #gene_id
+#1       transcript_id
+#2       sprot_Top_BLASTX_hit
+#3       RNAMMER
+#4       prot_id
+#5       prot_coords
+#6       sprot_Top_BLASTP_hit
+#7       custom_pombe_pep_BLASTX
+#8       custom_pombe_pep_BLASTP
+#9       Pfam
+#10      SignalP
+#11      TmHMM
+#12      eggnog
+#13      Kegg
+#14      gene_ontology_blast
+#15      gene_ontology_pfam
+#16      transcript
+#17      peptide
+
+#using report file generate a map of feature identifier to an annotated feature identifier like so
+~/local/trinotate/util/Trinotate_get_feature_name_encoding_attributes.pl \
+                  trinotate_annotation_report.xls  > annot_feature_map.txt
+#update expression matrix file
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/rename_matrix_feature_identifiers.pl \
+    /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Genes.counts.matrix  annot_feature_map.txt > Trinity_trans.genes.counts.wAnnot.matrix
+#created output file Trinity_trans.counts.genes.wAnnot.matrix
+
+###################################
+
+###################################
+#Blastn W82 transcripts to de novo assembly so I can compare with blastn results of trinity trascripts to W82 predicted transcripts to find transcripts only present in trinity assembly
+#make trinity.fast searchable database
+module load blast
+makeblastdb -in Trinity.fast -dbtype nucl
+blastn -query /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Williams82/Gmax_275_Wm82.a2.v1.transcript.fa -db /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta -out W82toTrinity_blastn.outfmt6 \
+        -evalue 1e-20 -num_threads 6 -max_target_seqs 1 -outfmt 6
+
+###################################
+
+###################################
+#Gene ontology enrichment using Trinotate and GOseq
+#extract GO assignments per gene including all parent terms
+~/local/trinotate//util/extract_GO_assignments_from_Trinotate_xls.pl \
+                         --Trinotate_xls /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/trinotate_annotation_report.xls \
+                         -G --include_ancestral_terms \
+                         > go_annotations.txt
+#create a gene lengths file 
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/misc/fasta_seq_length.pl  /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinity.fasta > Trinity.fasta.seq_lens
+~/local/src/trinityrnaseq-Trinity-v2.8.4/util/misc/TPM_weighted_gene_length.py  \
+         --gene_trans_map /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Trinonate/Trinity.fasta.gene_trans_map \
+         --trans_lengths Trinity.fasta.seq_lens \
+         --TPM_matrix /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/isoforms.TMM.EXP.matrix > Trinity.gene_lengths.txt
+#run GO-Seq for enrichment analysis of DEGs (need to run in edgeR output directory to run GO enrichment on same pairwise comparison)
+module load R
+R
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("goseq", version = "3.8")
+library(goseq)
+#quitR
+~/local/src/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/analyze_diff_expr.pl --examine_GO_enrichment \
+	--GO_annots /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/GO_enrichment/go_annotations.txt \
+	--gene_lengths /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/GO_enrichment/Trinity.gene_lengths.txt \
+	--matrix /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Genes.counts.matrix \
+	--samples /fs/project/PAS1051/Karhoff_RNASeq/Sickle_output/Seqtk_output/trinity_out_dir/Samples3.txt 
+
+##################################
+
