@@ -1,0 +1,173 @@
+#Salicilic Acid R vs S Concentration and model for 2021 LL experiment
+Rep 3 and Parents Removed 
+#set working directory (with ceros)
+setwd("C:/Users/chris/Desktop/Glyma26900_Seq_Alligments_Data/Final_Master_Glyma26900_File/LC-MS from FREC/Data_Ready_For_R/Data_Clean_Rep3_Removed_No_Parents")
+#import csv file with 2STDV remove 
+Salycilic_Acid = read.csv("SA_Clean_3xSTDV_Rep3_Out_No_Parents.csv", sep=",",header=T,na.strings="NA")
+#check data
+head(Salycilic_Acid)
+tail(Salycilic_Acid)
+summary(Salycilic_Acid)
+str(Salycilic_Acid)
+#change Rep  to factor
+Salycilic_Acid$Rep <- factor(Salycilic_Acid$Rep,ordered=TRUE)
+str(Salycilic_Acid)
+#assign variable names for ease of use
+NILS=as.factor(Salycilic_Acid$NILS)
+ALLELE=as.factor(Salycilic_Acid$Allele)
+REP=as.factor(Salycilic_Acid$Rep)
+SA=as.numeric(Salycilic_Acid$SA.ng.g.)
+TRT=as.factor(Salycilic_Acid$Treatment)
+BACK=as.factor(Salycilic_Acid$Background)
+CLASS=as.factor(Salycilic_Acid$Class)
+# Load packages for the analysis 
+library(lmerTest)
+library(lme4)
+
+#Model 
+modelA<-lmer(SA~ALLELE + (1|REP) + TRT + ALLELE:TRT + (1|NILS:ALLELE) + (1|NILS:ALLELE:TRT), REML=FALSE, data= Salycilic_Acid)
+modelA
+anova(modelA)
+#lsmeans for model A (Anova not significant so no LSmeans run) 
+#difflsmeans(modelA, test.effs="BACK:ALLELE:TRT")
+#SALsmeans<-difflsmeans(modelA, test.effs="BACK:ALLELE:TRT")
+#write.table(SALsmeans, file="Salicylic_Acid_lsmeans.csv",sep= " , ")
+SAanova<-anova(modelA)   
+SAranova<-ranova(modelA)      
+write.table(SAanova, file="Salyciclic_Acid_ANOVA_Table.csv",sep= " , ")
+write.table(SAranova, file="Salycilic_Acid_RANOVA_Table.csv",sep= " , ")
+
+#TTest for significance
+t.test(SA[ALLELE=="OX"],SA[ALLELE=="105B"],na.rm=T,data=Salycilic_Acid)   
+t.test(SA[TRT=="Inoc"],SA[TRT=="Mock"],na.rm=T,data= Salycilic_Acid)
+t.test(SA[BACK=="NIL"],SA[BACK=="PI105B"],na.rm=T,data=Salycilic_Acid)   
+t.test(SA[BACK=="NIL"],SA[BACK=="P-OX"],na.rm=T,data=Salycilic_Acid)   
+#SAanova<-anova(modelA)   
+#SAranova<-ranova(modelA)      
+#rand(modelA)
+#write.table(SAanova, file="SA_anova.csv",sep= " , ")
+#write.table(SAranova, file="SA_ranova.csv",sep= " , ")
+# Calculates Least Squares Means and Confidence Intervals For The Factors Of my Fixed Part Of my Mixed Effects Model, in this case ALLELEOX    and   ALLELE105B.
+#lsmeansLT(modelA) 
+#    Performs Backward Elimination Of Non-Significant Effects Of Linear Mixed Effects Model. In this case tells you that LINE is still not significant.  For fix effect ( P-Value = F test based on Sattethwaite's or Kenward-Roger) For random effect (P-Value is based on likelihood ratio)
+#step(modelA)
+#Summary for entire model A
+summary(modelA)
+#mean by Inoc Mock allele comparison 
+IR<-mean(SA[TRT=="Inoc"&CLASS=="EXP"&ALLELE=="105B"],na.rm=T)
+MR<-mean(SA[TRT=="Mock"&CLASS=="EXP"&ALLELE=="105B"],na.rm=T)
+IS<-mean(SA[TRT=="Inoc"&CLASS=="EXP"&ALLELE=="OX"],na.rm=T)
+MS<-mean(SA[TRT=="Mock"&CLASS=="EXP"&ALLELE=="OX"],na.rm=T)
+#histogram of lesion length by allele ( R vs S)
+hist(SA[ALLELE=="105B"],xlab="Salycilic Acid ng/g",main="Allele 105B",col=3)
+hist(SA[ALLELE=="OX"],xlab="Salycilic Acid ng/g",main="Allele OX",col=4)
+hist(SA)
+
+#histogram of lesion length by allele (M vs I)
+hist(SA[TRT=="Inoc"],xlab="Salycilic Acid ng/g",main="Inoc",col=3)
+hist(SA[TRT=="Mock"],xlab="Salycilic Acid ng/g",main="Mock",col=4)
+#subset data and Calculate standard error for Alleles OX and 105B (Figure1)
+A <- subset(SA, TRT=="Inoc"&CLASS=="EXP"&ALLELE=="105B",na.rm=TRUE)
+B<- subset(SA, TRT=="Mock"&CLASS=="EXP"&ALLELE=="105B",na.rm=TRUE)
+C<- subset(SA, TRT=="Inoc"&CLASS=="EXP"&ALLELE=="OX",na.rm=TRUE)
+D<- subset(SA, TRT=="Mock"&CLASS=="EXP"&ALLELE=="OX",na.rm=TRUE)
+
+a<-sd(A,na.rm=T)/sqrt(length(A))
+b<-sd(B,na.rm=T)/sqrt(length(B))
+c<-sd(C,na.rm=T)/sqrt(length(C))
+d<-sd(D,na.rm=T)/sqrt(length(D))
+#create data frame for bar for Introgression (all lines) R vs S 
+Frame1<- data.frame(SA = c(IR,MR,IS,MS),se=c(a,b,c,d),Treatment= factor(c("Inoc","Mock", "Inoc","Mock")), INT= factor(c("105B","105B","OX","OX")))
+Frame1
+#create limits for error bars
+library(ggplot2)
+library(ggsignif)
+Limits1 <-aes(ymax =  SA + se, ymin = SA - se)
+theme_set(theme_classic(base_size=20))
+# Bar chart for introgression R vs S
+P1<-ggplot(Frame1, aes(INT,SA,fill=Treatment)) + stat_summary (fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar (Limits1, position = position_dodge(width = 0.9), width = 0.25,size=0.9) + scale_fill_manual (values=c("gray25","white")) + xlab("Introgression") + ylab("Salicylic Acid (ng/g)") + theme(legend.position="none") 
+P1
+#ggsave(filename="Salicylic Acid Multiple comparisons.jpeg",P1,dpi=300,width=180, height=204.8,units="mm")
+
+
+
+
+#Jasmonic Acid Concentration and model for 2021 LL experiment 
+#set working directory (with ceros)
+setwd("C:/Users/chris/Desktop/Glyma26900_Seq_Alligments_Data/Final_Master_Glyma26900_File/LC-MS from FREC/Data_Ready_For_R/Data_Clean_Rep3_Removed_No_Parents")
+#import csv file
+Jasmonic_Acid = read.csv("JA_Clean_3xSTDV_Rep3_Out_No_Parents.csv", sep=",",header=T,na.strings="NA")
+#check data
+head(Jasmonic_Acid)
+tail(Jasmonic_Acid)
+summary(Jasmonic_Acid)
+str(Jasmonic_Acid)
+#change Rep  to factor
+Jasmonic_Acid$Rep <- factor(Jasmonic_Acid$Rep,ordered=TRUE)
+str(Jasmonic_Acid)
+#assign variable names for ease of use
+NILS=as.factor(Jasmonic_Acid$NILS)
+ALLELE=as.factor(Jasmonic_Acid$Allele)
+REP=as.factor(Jasmonic_Acid$Rep)
+JA=as.numeric(Jasmonic_Acid$JA..ng.g.)
+TRT=as.factor(Jasmonic_Acid$Treatment)
+BACK=as.factor(Jasmonic_Acid$Background)
+CLASS=as.factor(Jasmonic_Acid$Class)
+# Load packages for the analysis 
+library(lmerTest)
+library(lme4)
+#Model 
+modelA<-lmer(JA~ALLELE + (1|REP) + TRT + ALLELE:TRT + (1|NILS:ALLELE) + (1|NILS:ALLELE:TRT), REML=FALSE, data= Jasmonic_Acid)
+modelA
+
+#lsmeans for model A
+JA_LSmeans<-difflsmeans(modelA, test.effs="BACK:ALLELE:TRT")
+write.table(JA_LSmeans, file="Jasmonic_Acid_LSmeans_Table.csv",sep= " , ")
+#TTest for significance
+t.test(JA[ALLELE=="OX"],JA[ALLELE=="105B"],na.rm=T,data=Jasmonic_Acid)   
+t.test(JA[TRT=="Inoc"],JA[TRT=="Mock"],na.rm=T,data=Jasmonic_Acid)
+t.test(JA[BACK=="NIL"],JA[BACK=="PI105B"],na.rm=T,data=Jasmonic_Acid)   
+t.test(JA[BACK=="NIL"],JA[BACK=="P-OX"],na.rm=T,data=Jasmonic_Acid)   
+JAanova<-anova(modelA)   
+JAranova<-ranova(modelA)      
+rand(modelA)
+write.table(JAanova, file="Jasmonic_Acid_ANOVA_Table.csv",sep= " , ")
+write.table(JAranova, file="Jasmonic_Acid_RANOVA_Table.csv",sep= " , ")
+# Calculates Least Squares Means and Confidence Intervals For The Factors Of my Fixed Part Of my Mixed Effects Model, in this case ALLELEOX    and   ALLELE105B.
+lsmeansLT(modelA) 
+#mean by Inoc Mock allele comparison 
+IR3<-mean(JA[TRT=="Inoc"&CLASS=="EXP"&ALLELE=="105B"],na.rm=T)
+MR3<-mean(JA[TRT=="Mock"&CLASS=="EXP"&ALLELE=="105B"],na.rm=T)
+IS3<-mean(JA[TRT=="Inoc"&CLASS=="EXP"&ALLELE=="OX"],na.rm=T)
+MS3<-mean(JA[TRT=="Mock"&CLASS=="EXP"&ALLELE=="OX"],na.rm=T)
+
+#subset data and Calculate standard error for Alleles OX and 105B (Figure1)
+A3 <- subset(JA, TRT=="Inoc"&CLASS=="EXP"&ALLELE=="105B",na.rm=TRUE)
+B3<- subset(JA, TRT=="Mock"&CLASS=="EXP"&ALLELE=="105B",na.rm=TRUE)
+C3<- subset(JA, TRT=="Inoc"&CLASS=="EXP"&ALLELE=="OX",na.rm=TRUE)
+D3<- subset(JA, TRT=="Mock"&CLASS=="EXP"&ALLELE=="OX",na.rm=TRUE)
+
+a3<-sd(A3,na.rm=T)/sqrt(length(A3))
+b3<-sd(B3,na.rm=T)/sqrt(length(B3))
+c3<-sd(C3,na.rm=T)/sqrt(length(C3))
+d3<-sd(D3,na.rm=T)/sqrt(length(D3))
+
+#boxplot to visualize data MR vs MS
+#create data frame for bar for Introgression (all lines) R vs S 
+Frame3<- data.frame(JA = c(IR3,MR3,IS3,MS3),se=c(a3,b3,c3,d3),Treatment= factor(c("Inoc","Mock", "Inoc","Mock")), INT= factor(c("105B","105B","OX","OX")))
+#create limits for error bars
+library(ggplot2)
+library(ggsignif)
+Limits1 <-aes(ymax =  JA + se, ymin = JA - se)
+theme_set(theme_classic(base_size=20))
+# Bar chart for introgression R vs S
+P3<-ggplot(Frame3, aes(INT,JA,fill=Treatment)) + stat_summary (fun.y=mean,na.rm=TRUE,geom="bar",position="dodge",colour="black") + geom_errorbar (Limits1, position = position_dodge(width = 0.9), width = 0.25,size=0.9) + scale_fill_manual (values=c("gray25","white")) + xlab("Introgression") + ylab("Jasmonic Acid (ng/g)") + theme(legend.position="none") 
+P3
+ggsave(filename="Jamsonci Acid Multiple comparisons.jpeg",P3,dpi=300,width=180, height=204.8,units="mm")
+
+#Consolidate SA and JA Graph 
+#install.packages("gridExtra")
+library("gridExtra")
+plot15<-(grid.arrange(P1,P3, ncol=2))
+plot15
+ggsave(filename="SA and JA Multiple Comparisons No Parents No Rep 3 Figure.jpeg",plot15,dpi=300,width=180,height=204.8,units="mm")
