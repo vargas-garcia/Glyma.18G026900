@@ -1,0 +1,537 @@
+Summary View of Contig "Complete coding Allignment 2022.fasta"
+
+
+>OX20-8             #1                  ATG GAT TAT GAA ATC GCT GAG AGC ACT GAC AAG
+>4213-1             #1                  ATG GAT TAT GAA ATC GCT GAG AGC ACT GAC AAG
+>4213-32            #1                  ATG GAT TCT GAA ATC GTT GAG AGC ACT GAC ATG
+>PI105B             #1                  ATG GAT TCT GAA ATC GTT GAG AGC ACT GAC ATG
+>WMS-82             #1                  ATG GAT TAT GAA ATC GCT GAG AGC ACT GAC AAG
+                                        ...........................................
+ Complete coding Al.#1                  ATG GAT TAT GAA ATC GCT GAG AGC ACT GAC AAG
+                                        M   D   Y   E   I   A   E   S   T   D   K  
+                                         W   I   M   K   S   L   R   A   L   T   R 
+                                          G   L   .   N   R   .   E   H   .   Q   G
+                                                 *           *                   * 
+
+>OX20-8             #34                 GCC GAT ATC ACT GTT GAT GCA AGG AGT TTT AGT
+>4213-1             #34                 GCC GAT ATC ACT GTT GAT GCA AGG AGT TTT AGT
+>4213-32            #34                 GCC GAT ATC ACT GTT GAT GCA AAG AGT TTT AGT
+>PI105B             #34                 GCC GAT ATC ACT GTT GAT GCA AAG AGT TTT AGT
+>WMS-82             #34                 GCC GAT ATC ACT GTT GAT GCA AGG AGT TTT AGT
+                                        ...........................................
+ Complete coding Al.#34                 GCC GAT ATC ACT GTT GAT GCA AGG AGT TTT AGT
+                                        A   D   I   T   V   D   A   R   S   F   S  
+                                         P   I   S   L   L   M   Q   G   V   L   V 
+                                          R   Y   H   C   .   C   K   E   F   .   L
+                                                                     *             
+
+>OX20-8             #67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+>4213-1             #67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+>4213-32            #67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+>PI105B             #67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+>WMS-82             #67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+                                        ...........................................
+ Complete coding Al.#67                 TGG GCA GTG GAC AGT GCG ATA AAG AGT GAG ACT
+                                        W   A   V   D   S   A   I   K   S   E   T  
+                                         G   Q   W   T   V   R   .   R   V   R   L 
+                                          G   S   G   Q   C   D   K   E   .   D   C
+                                                                                   
+
+>OX20-8             #100                GCG TCA ATT TTG GGA GAA TCC CGA ATC CAT AGT
+>4213-1             #100                GCG TCA ATT TTG GGA GAA TCC CGA ATC CAT AGT
+>4213-32            #100                GCG TCA ATT TCG GGA GAA TCC CGA ATC CAT AGT
+>PI105B             #100                GCG TCA ATT TCG GGA GAA TCC CGA ATC CAT AGT
+>WMS-82             #100                GCG TCA ATT TTG GGA GAA TCC CGA ATC CAT AGT
+                                        ...........................................
+ Complete coding Al.#100                GCG TCA ATT TTG GGA GAA TCC CGA ATC CAT AGT
+                                        A   S   I   L   G   E   S   R   I   H   S  
+                                         R   Q   F   W   E   N   P   E   S   I   V 
+                                          V   N   F   G   R   I   P   N   P   .   F
+                                                     *                             
+
+>OX20-8             #133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+>4213-1             #133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+>4213-32            #133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+>PI105B             #133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+>WMS-82             #133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+                                        ...........................................
+ Complete coding Al.#133                TTT TGT TCC GTA GTG GAC AAT GCC ATA AGG AGT
+                                        F   C   S   V   V   D   N   A   I   R   S  
+                                         F   V   P   .   W   T   M   P   .   G   V 
+                                          L   F   R   S   G   Q   C   H   K   E   .
+                                                                                   
+
+>OX20-8             #166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCC
+>4213-1             #166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCC
+>4213-32            #166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCT
+>PI105B             #166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCT
+>WMS-82             #166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCC
+                                        ...........................................
+ Complete coding Al.#166                AGG ACT GCA TCA GAT TTG GGA ACA TCT CCT TCC
+                                        R   T   A   S   D   L   G   T   S   P   S  
+                                         G   L   H   Q   I   W   E   H   L   L   P 
+                                          D   C   I   R   F   G   N   I   S   F   P
+                                                                                  *
+
+>OX20-8             #199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+>4213-1             #199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+>4213-32            #199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+>PI105B             #199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+>WMS-82             #199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+                                        ...........................................
+ Complete coding Al.#199                CCT GTC CAT AGT CTT GCT TCG GCA GTG GCC AAT
+                                        P   V   H   S   L   A   S   A   V   A   N  
+                                         L   S   I   V   L   L   R   Q   W   P   M 
+                                          C   P   .   S   C   F   G   S   G   Q   C
+                                                                                   
+
+>OX20-8             #232                GCA ATG AGC AGC AGT AGT GCT GCA CCA TTT TCA
+>4213-1             #232                GCA ATG AGC AGC AGT AGT GCT GCA CCA TTT TCA
+>4213-32            #232                GCA ATG AGC AGC AGT AGT ::: ::: ::: ::: :::
+>PI105B             #232                GCA ATG AGC AGC AGT AGT ::: ::: ::: ::: :::
+>WMS-82             #232                GCA ATG AGC AGC AGT AGT GCT GCA CCA TTT TCA
+                                        ...........................................
+ Complete coding Al.#232                GCA ATG AGC AGC AGT AGT GCT GCA CCA TTT TCA
+                                        A   M   S   S   S   S   A   A   P   F   S  
+                                         Q   .   A   A   V   V   L   H   H   F   H 
+                                          N   E   Q   Q   .   C   C   T   I   F   T
+                                                                                   
+
+>OX20-8             #265                CAA CTG GAA ACG TCT CCT TCT CCT GTC CAG AGT
+>4213-1             #265                CAA CTG GAA ACG TCT CCT TCT CCT GTC CAG AGT
+>4213-32            #265                ::: ::: ::: ::: ::: ::: ::: ::: ::: ::: :::
+>PI105B             #265                ::: ::: ::: ::: ::: ::: ::: ::: ::: ::: :::
+>WMS-82             #265                CAA CTG GAA ACG TCT CCT TCT CCT GTC CAG AGT
+                                        ...........................................
+ Complete coding Al.#265                CAA CTG GAA ACG TCT CCT TCT CCT GTC CAG AGT
+                                        Q   L   E   T   S   P   S   P   V   Q   S  
+                                         N   W   K   R   L   L   L   L   S   R   V 
+                                          T   G   N   V   S   F   S   C   P   E   S
+                                                                                   
+
+>OX20-8             #298                CTT GCT TCG GCA GTG CCC AGT GCA ATG AGC AGG
+>4213-1             #298                CTT GCT TCG GCA GTG CCC AGT GCA ATG AGC AGG
+>4213-32            #298                ::: ::: ::: ::: ::: ::: ::: ::: ::: ::: :::
+>PI105B             #298                ::: ::: ::: ::: ::: ::: ::: ::: ::: ::: :::
+>WMS-82             #298                CTT GCT TCG GCA GTG CCC AGT GCA ATG AGC AGG
+                                        ...........................................
+ Complete coding Al.#298                CTT GCT TCG GCA GTG CCC AGT GCA ATG AGC AGG
+                                        L   A   S   A   V   P   S   A   M   S   R  
+                                         L   L   R   Q   C   P   V   Q   .   A   G 
+                                          C   F   G   S   A   Q   C   N   E   Q   E
+                                                                                   
+
+>OX20-8             #331                AGT AAA GCT GCA CCA TTT TCA CAA CTG GAA GTG
+>4213-1             #331                AGT AAA GCT GCA CCA TTT TCA CAA CTG GAA GTG
+>4213-32            #331                ::: ::: GCT GCA CCA TTT TCA CAA CTG GAA GTG
+>PI105B             #331                ::: ::: GCT GCA CCA TTT TCA CAA CTG GAA GTG
+>WMS-82             #331                AGT AAA GCT GCA CCA TTT TCA CAA CTG GAA GTG
+                                        ...........................................
+ Complete coding Al.#331                AGT AAA GCT GCA CCA TTT TCA CAA CTG GAA GTG
+                                        S   K   A   A   P   F   S   Q   L   E   V  
+                                         V   K   L   H   H   F   H   N   W   K   W 
+                                          .   S   C   T   I   F   T   T   G   S   G
+                                                                                   
+
+>OX20-8             #364                GTG CCG AAC GCC ACT AGA CAT GTT CCT GCA CGA
+>4213-1             #364                GTG CCG AAC GCC ACT AGA CAT GTT CCT GCA CGA
+>4213-32            #364                GTG CCC AAC GCC ACT GGA CTT GTT CCT GCA CGA
+>PI105B             #364                GTG CCC AAC GCC ACT GGA CTT GTT CCT GCA CGA
+>WMS-82             #364                GTG CCC AAC GCC ACT AGA CAT GTT CCT GCA CGA
+                                        ...........................................
+ Complete coding Al.#364                GTG CCC AAC GCC ACT AGA CAT GTT CCT GCA CGA
+                                        V   P   N   A   T   R   H   V   P   A   R  
+                                         C   P   T   P   L   D   M   F   L   H   D 
+                                          A   Q   R   H   .   T   C   S   C   T   I
+                                              *             *    *                 
+
+>OX20-8             #397                TTA TTC ACC TGG GCT GAG CTT AAA GCA GCC ACC
+>4213-1             #397                TTA TTC ACC TGG GCT GAG CTT AAA GCA GCC ACC
+>4213-32            #397                TTA TTC ACC TGG TCT GAG CTT AAA GAA GCC ACC
+>PI105B             #397                TTA TTC ACC TGG TCT GAG CTT AAA GAA GCC ACC
+>WMS-82             #397                TTA TTC ACC TGG GCT GAG CTT AAA GCA GCC ACC
+                                        ...........................................
+ Complete coding Al.#397                TTA TTC ACC TGG GCT GAG CTT AAA GCA GCC ACC
+                                        L   F   T   W   A   E   L   K   A   A   T  
+                                         Y   S   P   G   L   S   L   K   Q   P   P 
+                                          I   H   L   G   .   A   .   S   S   H   Q
+                                                        *                *         
+
+>OX20-8             #430                AAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+>4213-1             #430                AAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+>4213-32            #430                TAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+>PI105B             #430                TAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+>WMS-82             #430                AAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+                                        ...........................................
+ Complete coding Al.#430                AAC AAT TTC TCA CCT CAC AAC CGG ATT CGT CAT
+                                        N   N   F   S   P   H   N   R   I   R   H  
+                                         T   I   S   H   L   T   T   G   F   V   I 
+                                          Q   F   L   T   S   Q   P   D   S   S   F
+                                        *                                          
+
+>OX20-8             #463                TTT GGA ACC TTT GGC TTT GGG TAC AGA GGC AAA
+>4213-1             #463                TTT GGA ACC TTT GGC TTT GGG TAC AGA GGC AAA
+>4213-32            #463                TTT GGA AGC TTT TTC TTT GTG TAC AGA GGC AAA
+>PI105B             #463                TTT GGA AGC TTT TTC TTT GTG TAC AGA GGC AAA
+>WMS-82             #463                TTT GGA ACC TTT GGC TTT GGG TAC AGA GGC AAA
+                                        ...........................................
+ Complete coding Al.#463                TTT GGA ACC TTT GGC TTT GGG TAC AGA GGC AAA
+                                        F   G   T   F   G   F   G   Y   R   G   K  
+                                         L   E   P   L   A   L   G   T   E   A   N 
+                                          W   N   L   W   L   W   V   Q   R   Q   T
+                                                 *      **       *                 
+
+>OX20-8             #496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+>4213-1             #496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+>4213-32            #496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+>PI105B             #496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+>WMS-82             #496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+                                        ...........................................
+ Complete coding Al.#496                CTC GTT GAT GGT CGT GAG GTC GCA ATC GTT AAG
+                                        L   V   D   G   R   E   V   A   I   V   K  
+                                         S   L   M   V   V   R   S   Q   S   L   R 
+                                          R   .   W   S   .   G   R   N   R   .   G
+                                                                                   
+
+>OX20-8             #529                GGA ACC CAG TTT GGT AAG TCT GAA TTT GCC ATC
+>4213-1             #529                GGA ACC CAG TTT GGT AAG TCT GAA TTT GCC ATC
+>4213-32            #529                GAA ACC CCG TTT GGT AAG TCT GAA TTT GCC ATC
+>PI105B             #529                GAA ACC CCG TTT GGT AAG TCT GAA TTT GCC ATC
+>WMS-82             #529                GGA ACC CAG TTT GGT AAG TCT GAA TTT GCC ATC
+                                        ...........................................
+ Complete coding Al.#529                GGA ACC CAG TTT GGT AAG TCT GAA TTT GCC ATC
+                                        G   T   Q   F   G   K   S   E   F   A   I  
+                                         E   P   S   L   V   S   L   N   L   P   S 
+                                          N   P   V   W   .   V   .   I   C   H   L
+                                         *       *                                 
+
+>OX20-8             #562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+>4213-1             #562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+>4213-32            #562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+>PI105B             #562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+>WMS-82             #562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+                                        ...........................................
+ Complete coding Al.#562                TTT TCC CGT TTA GAC CAT AGG AAC TTG GTT GGG
+                                        F   S   R   L   D   H   R   N   L   V   G  
+                                         F   P   V   .   T   I   G   T   W   L   G 
+                                          F   P   F   R   P   .   E   L   G   W   A
+                                                                                   
+
+>OX20-8             #595                CTT GTT GGG TAC TGT GAA AAC AGA GAT GAA AGG
+>4213-1             #595                CTT GTT GGG TAC TGT GAA AAC AGA GAT GAA AGG
+>4213-32            #595                CTT GTT GGG CAC TGT GAA AAC AGA GAT GAA AGG
+>PI105B             #595                CTT GTT GGG CAC TGT GAA AAC AGA GAT GAA AGG
+>WMS-82             #595                CTG GTT GGG TAC TGT GAA AAC AGA GAT GAA AGG
+                                        ...........................................
+ Complete coding Al.#595                CTT GTT GGG TAC TGT GAA AAC AGA GAT GAA AGG
+                                        L   V   G   Y   C   E   N   R   D   E   R  
+                                         L   L   G   T   V   K   T   E   M   K   G 
+                                          C   W   V   L   .   K   Q   R   .   K   A
+                                          *         *                              
+
+>OX20-8             #628                CTG TCA GTT TAC GAG TAT ATG AAG AAT GGG TTG
+>4213-1             #628                CTG TCA GTT TAC GAG TAT ATG AAG AAT GGG TTG
+>4213-32            #628                CTG TCA GTG TAT GAG TAT ATG AAG AAT GGG TCA
+>PI105B             #628                CTG TCA GTG TAT GAG TAT ATG AAG AAT GGG TCA
+>WMS-82             #628                CTG TCA GTT TAC GAG TAT ATG AAG AAT GGG TTG
+                                        ...........................................
+ Complete coding Al.#628                CTG TCA GTT TAC GAG TAT ATG AAG AAT GGG TTG
+                                        L   S   V   Y   E   Y   M   K   N   G   L  
+                                         C   Q   F   T   S   I   .   R   M   G   C 
+                                          V   S   L   R   V   Y   E   E   W   V   V
+                                                  *   *                          **
+
+>OX20-8             #661                TTG CGT GAT TGC TTG CAT GAT AAG AAC AAT GTG
+>4213-1             #661                TTG CGT GAT TGC TTG CAT GAT AAG AAC AAT GTG
+>4213-32            #661                TTG CAT GAT TGC TTG CAA GAT AAG AAC AAT GTG
+>PI105B             #661                TTG CAT GAT TGC TTG CAA GAT AAG AAC AAT GTG
+>WMS-82             #661                TTG CGT GAT TGC TTG CAT GAT AAG AAC AAT GTG
+                                        ...........................................
+ Complete coding Al.#661                TTG CGT GAT TGC TTG CAT GAT AAG AAC AAT GTG
+                                        L   R   D   C   L   H   D   K   N   N   V  
+                                         C   V   I   A   C   M   I   R   T   M   W 
+                                          A   .   L   L   A   .   .   E   Q   C   G
+                                             *                *                    
+
+>OX20-8             #694                GAC AAG GAT AGC AGT GTG TTG AAT TCG TGG AAA
+>4213-1             #694                GAC AAG GAT AGC AGT GTG TTG AAT TCG TGG AAA
+>4213-32            #694                GAC AAG GAT TGC AGT GTG TTG AAT TCG TGG AAA
+>PI105B             #694                GAC AAG GAT TGC AGT GTG TTG AAT TCG TGG AAA
+>WMS-82             #694                GAC AAG GAT AGC AGT GTG TTG AAT TCG TGG AAA
+                                        ...........................................
+ Complete coding Al.#694                GAC AAG GAT AGC AGT GTG TTG AAT TCG TGG AAA
+                                        D   K   D   S   S   V   L   N   S   W   K  
+                                         T   R   I   A   V   C   .   I   R   G   K 
+                                          Q   G   .   Q   C   V   E   F   V   E   N
+                                                    *                              
+
+>OX20-8             #727                ATG AGG ATC AAG ATT GCT TGG GAT GCT TCC TTG
+>4213-1             #727                ATG AGG ATC AAG ATT GCT TGG GAT GCT TCC TTG
+>4213-32            #727                ATG AGG ATC AAG ATT GCT TTG GAT GCT TCC TTG
+>PI105B             #727                ATG AGG ATC AAG ATT GCT TTG GAT GCT TCC TTG
+>WMS-82             #727                ATG AGG ATC AAG ATT GCT TGG GAT GCT TCC TTG
+                                        ...........................................
+ Complete coding Al.#727                ATG AGG ATC AAG ATT GCT TGG GAT GCT TCC TTG
+                                        M   R   I   K   I   A   W   D   A   S   L  
+                                         .   G   S   R   L   L   G   M   L   P   W 
+                                          E   D   Q   D   C   L   G   C   F   L   G
+                                                                 *                 
+
+>OX20-8             #760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+>4213-1             #760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+>4213-32            #760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+>PI105B             #760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+>WMS-82             #760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+                                        ...........................................
+ Complete coding Al.#760                GGA ATA CAA TAT CTG CAT AAT TAT GCA AAT CCA
+                                        G   I   Q   Y   L   H   N   Y   A   N   P  
+                                         E   Y   N   I   C   I   I   M   Q   I   H 
+                                          N   T   I   S   A   .   L   C   K   S   I
+                                                                                   
+
+>OX20-8             #793                TCT ATT ATT CAC AGG GAT ATC AAG TCT TCC AAT
+>4213-1             #793                TCT ATT ATT CAC AGG GAT ATC AAG TCT TCC AAT
+>4213-32            #793                TCT ATT ATT CAC AGA GGT ATC AAG TCT TCT AAT
+>PI105B             #793                TCT ATT ATT CAC AGA GGT ATC AAG TCT TCT AAT
+>WMS-82             #793                TCT ATT ATT CAC AGG GAT ATC AAG TCT TCC AAT
+                                        ...........................................
+ Complete coding Al.#793                TCT ATT ATT CAC AGG GAT ATC AAG TCT TCC AAT
+                                        S   I   I   H   R   D   I   K   S   S   N  
+                                         L   L   F   T   G   I   S   S   L   P   I 
+                                          Y   Y   S   Q   G   Y   Q   V   F   Q   Y
+                                                          *  *                *    
+
+>OX20-8             #826                ATT CTT CTT GAT GCC AGT TGG ACG GCT AGA GTA
+>4213-1             #826                ATT CTT CTT GAT GCC AGT TGG ACG GCT AGA GTA
+>4213-32            #826                ATT CTT CTT GAT GCC ACT TGG ACG GCT AGA GTA
+>PI105B             #826                ATT CTT CTT GAT GCC ACT TGG ACG GCT AGA GTA
+>WMS-82             #826                ATT CTT CTT GAT GCC AGT TGG ACG GCT AGA GTA
+                                        ...........................................
+ Complete coding Al.#826                ATT CTT CTT GAT GCC AGT TGG ACG GCT AGA GTA
+                                        I   L   L   D   A   S   W   T   A   R   V  
+                                         F   F   L   M   P   V   G   R   L   E   Y 
+                                          S   S   .   C   Q   L   D   G   .   S   I
+                                                             *                     
+
+>OX20-8             #859                TTT GAT TTT GAA TTG TCG TTC ATA TGT CCA GAA
+>4213-1             #859                TTT GAT TTT GAA TTG TCG TTC ATA TGT CCA GAA
+>4213-32            #859                TTT GGT TTT GGA TGG TCG TTC ATA TGT CCA GAA
+>PI105B             #859                TTT GGT TTT GGA TGG TCG TTC ATA TGT CCA GAA
+>WMS-82             #859                TTT GAT TTT GAA TTG TCG TTC ATA TGT CCA GAA
+                                        ...........................................
+ Complete coding Al.#859                TTT GAT TTT GAA TTG TCG TTC ATA TGT CCA GAA
+                                        F   D   F   E   L   S   F   I   C   P   E  
+                                         L   I   L   N   C   R   S   Y   V   Q   N 
+                                          .   F   .   I   V   V   H   M   S   R   T
+                                             *       *   *                         
+
+>OX20-8             #892                CCT GAC GAT GAA TAC GAT GAG ATT ATA ATG GGA
+>4213-1             #892                CCT GAC GAT GAA TAC GAT GAG ATT ATA ATG GGA
+>4213-32            #892                CCT GAC GGT GAA TAC GAA GAG AGA ATA GTG GGA
+>PI105B             #892                CCT GAC GGT GAA TAC GAA GAG AGA ATA GTG GGA
+>WMS-82             #892                CCT GAC GAT GAA TAC GAT GAG ATT ATA ATG GGA
+                                        ...........................................
+ Complete coding Al.#892                CCT GAC GAT GAA TAC GAT GAG ATT ATA ATG GGA
+                                        P   D   D   E   Y   D   E   I   I   M   G  
+                                         L   T   M   N   T   M   R   L   .   W   E 
+                                          .   R   .   I   R   .   D   Y   N   G   N
+                                                 *            *      **     *      
+
+>OX20-8             #925                ACC ATG GGA TAC ATG TGC CCT GAG TAC ATG ACT
+>4213-1             #925                ACC ATG GGA TAC ATG TGC CCT GAG TAC ATG ACT
+>4213-32            #925                ACC TAC GGA TAC ATT TCC CCT GAG TAC GCC ATG
+>PI105B             #925                ACC TAC GGA TAC ATT TCC CCT GAG TAC GCC ATG
+>WMS-82             #925                ACC ATG GGA TAC ATG TGC CCT GAG TAC ATG ACT
+                                        ...........................................
+ Complete coding Al.#925                ACC ATG GGA TAC ATG TGC CCT GAG TAC ATG ACT
+                                        T   M   G   Y   M   C   P   E   Y   M   T  
+                                         P   W   D   T   C   A   L   S   T   .   L 
+                                          H   G   I   H   V   P   .   V   H   D   S
+                                            ***           *  *              ***  **
+
+>OX20-8             #958                CGA GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+>4213-1             #958                CGA GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+>4213-32            #958                TGG GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+>PI105B             #958                TGG GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+>WMS-82             #958                CGA GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+                                        ...........................................
+ Complete coding Al.#958                CGA GGT GTG TTG ACA GCA AAG TGT GAT GTG TAC
+                                        R   G   V   L   T   A   K   C   D   V   Y  
+                                         E   V   C   .   Q   Q   S   V   M   C   T 
+                                          R   C   V   D   S   K   V   .   C   V   R
+                                        * *                                        
+
+>OX20-8             #991                GGG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+>4213-1             #991                GGG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+>4213-32            #991                GCG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+>PI105B             #991                GCG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+>WMS-82             #991                GGG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+                                        ...........................................
+ Complete coding Al.#991                GGG CTT GGA GTT GTA TTG CTT GAA CTT TTA ACG
+                                        G   L   G   V   V   L   L   E   L   L   T  
+                                         G   L   E   L   Y   C   L   N   F   .   R 
+                                          A   W   S   C   I   A   .   T   F   N   G
+                                         *                                         
+
+>OX20-8             #1024               GGT AAG AGA GCT ATA CTA CTC GAG TCT GAG GAA
+>4213-1             #1024               GGT AAG AGA GCT ATA CTA CTC GAG TCT GAG GAA
+>4213-32            #1024               GGT AAG AGA GTT ATA TTG CCC ::: TCT GAG GAC
+>PI105B             #1024               GGT AAG AGA GTT ATA TTG CCC ::: TCT GAG GAC
+>WMS-82             #1024               GGT AAG AGA GCT ATA CTA CTC GAG TCT GAG GAA
+                                        ...........................................
+ Complete coding Al.#1024               GGT AAG AGA GCT ATA CTA CTC GAG TCT GAG GAA
+                                        G   K   R   A   I   L   L   E   S   E   E  
+                                         V   R   E   L   Y   Y   S   S   L   R   K 
+                                          .   E   S   Y   T   T   R   V   .   G   R
+                                                     *      * *  *  ***           *
+
+>OX20-8             #1057               GAT GGA CCT CCA TTT TAT TTG GTG GAC TTT GCA
+>4213-1             #1057               GAT GGA CCT CCA TTT TAT TTG GTG GAC TTT GCA
+>4213-32            #1057               GGT GAA GAA CCA ::: CGT TTG CTG GAC TTT GCA
+>PI105B             #1057               GGT GAA GAA CCA ::: CGT TTG CTG GAC TTT GCA
+>WMS-82             #1057               GAT GGA CCT CCA TTT TAT TTG GTG GAC TTT GCA
+                                        ...........................................
+ Complete coding Al.#1057               GAT GGA CCT CCA TTT TAT TTG GTG GAC TTT GCA
+                                        D   G   P   P   F   Y   L   V   D   F   A  
+                                         M   D   L   H   F   I   W   W   T   L   Q 
+                                          W   T   S   I   L   F   G   G   L   C   S
+                                         *   *  ***     *** **      *              
+
+>OX20-8             #1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+>4213-1             #1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+>4213-32            #1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+>PI105B             #1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+>WMS-82             #1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+                                        ...........................................
+ Complete coding Al.#1090               GTG CCT CCT ATT TTG GCT GGA GAT TTG GTC GAA
+                                        V   P   P   I   L   A   G   D   L   V   E  
+                                         C   L   L   F   W   L   E   I   W   S   K 
+                                          A   S   Y   F   G   W   R   F   G   R   N
+                                                                                   
+
+>OX20-8             #1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT TTG
+>4213-1             #1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT TTG
+>4213-32            #1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT GTG
+>PI105B             #1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT GTG
+>WMS-82             #1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT TTG
+                                        ...........................................
+ Complete coding Al.#1123               ATT TTG GAT TCA AGG GTT GGA CCA CCC GAT TTG
+                                        I   L   D   S   R   V   G   P   P   D   L  
+                                         F   W   I   Q   G   L   D   H   P   I   . 
+                                          F   G   F   K   G   W   T   T   R   F   E
+                                                                                *  
+
+>OX20-8             #1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+>4213-1             #1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+>4213-32            #1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+>PI105B             #1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+>WMS-82             #1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+                                        ...........................................
+ Complete coding Al.#1156               AAA GAA GCA GAG GCA CTG AAG ATC CTG GCC CAT
+                                        K   E   A   E   A   L   K   I   L   A   H  
+                                         K   K   Q   R   H   .   R   S   W   P   I 
+                                          R   S   R   G   T   E   D   P   G   P   Y
+                                                                                   
+
+>OX20-8             #1189               ACA GCT ATA CGT TGT GTG GAA GAG GAA CCG AGG
+>4213-1             #1189               ACA GCT ATA CGT TGT GTG GAA GAG GAA CCG AGG
+>4213-32            #1189               ACA GCT ATA CGT TGT GTG GAA GTG GAA CCG AGG
+>PI105B             #1189               ACA GCT ATA CGT TGT GTG GAA GTG GAA CCG AGG
+>WMS-82             #1189               ACA GCT ATA CGT TGT GTG GAA GAG GAA CCG AGG
+                                        ...........................................
+ Complete coding Al.#1189               ACA GCT ATA CGT TGT GTG GAA GAG GAA CCG AGG
+                                        T   A   I   R   C   V   E   E   E   P   R  
+                                         Q   L   Y   V   V   W   K   R   N   R   G 
+                                          S   Y   T   L   C   G   R   G   T   E   A
+                                                                     *             
+
+>OX20-8             #1222               CAA AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+>4213-1             #1222               CAA AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+>4213-32            #1222               CAT AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+>PI105B             #1222               CAT AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+>WMS-82             #1222               CAA AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+                                        ...........................................
+ Complete coding Al.#1222               CAA AGA CCA ACC ATG AAT GAC ATT GTG GTC GAT
+                                        Q   R   P   T   M   N   D   I   V   V   D  
+                                         K   D   Q   P   .   M   T   L   W   S   I 
+                                          K   T   N   H   E   .   H   C   G   R   F
+                                          *                                        
+
+>OX20-8             #1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+>4213-1             #1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+>4213-32            #1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+>PI105B             #1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+>WMS-82             #1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+                                        ...........................................
+ Complete coding Al.#1255               TTG GAT CGG GCT TTT GCT ATT TGT GGT AGT AGC
+                                        L   D   R   A   F   A   I   C   G   S   S  
+                                         W   I   G   L   L   L   F   V   V   V   A 
+                                          G   S   G   F   C   Y   L   W   .   .   P
+                                                                                   
+
+>OX20-8             #1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC ATT GCA
+>4213-1             #1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC ATT GCA
+>4213-32            #1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC AAT GCA
+>PI105B             #1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC AAT GCA
+>WMS-82             #1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC ATT GCA
+                                        ...........................................
+ Complete coding Al.#1288               CTA TAT GAT GAG AAC TTT TCC TAT TCC ATT GCA
+                                        L   Y   D   E   N   F   S   Y   S   I   A  
+                                         Y   M   M   R   T   F   P   I   P   L   H 
+                                          I   .   .   E   L   F   L   F   H   C   I
+                                                                             *     
+
+>OX20-8             #1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+>4213-1             #1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+>4213-32            #1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+>PI105B             #1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+>WMS-82             #1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+                                        ...........................................
+ Complete coding Al.#1321               TTA CCA TCA CAT GAG TCC AAT CAT ATG ACT CCG
+                                        L   P   S   H   E   S   N   H   M   T   P  
+                                         Y   H   H   M   S   P   I   I   .   L   R 
+                                          T   I   T   .   V   Q   S   Y   D   S   G
+                                                                                   
+
+>OX20-8             #1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+>4213-1             #1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+>4213-32            #1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+>PI105B             #1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+>WMS-82             #1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+                                        ...........................................
+ Complete coding Al.#1354               GAT CCT CTT GAT ACG GAC TCA TGT GAT ATT CCA
+                                        D   P   L   D   T   D   S   C   D   I   P  
+                                         I   L   L   I   R   T   H   V   I   F   Q 
+                                          S   S   .   Y   G   L   M   .   Y   S   N
+                                                                                   
+
+>OX20-8             #1387               ATC TAC GAA GAG AAT ACG AAC TCA TGA        
+>4213-1             #1387               ATC TAC GAA GAG AAT ACG AAC TCA TGA        
+>4213-32            #1387               ATC GAC GAA GAG ATT ::: ::C TTA TTA TTG ATT
+>PI105B             #1387               ATC GAC GAA GAG ATT ::: ::C TTA TTA TTG ATT
+>WMS-82             #1387               ATC TAC GAA GAG AAT ACG AAC TCA TGA        
+                                        ...........................................
+ Complete coding Al.#1387               ATC TAC GAA GAG AAT ACG AAC TCA TGA TTG ATT
+                                        I   Y   E   E   N   T   N   S   .   L   I  
+                                         S   T   K   R   I   R   T   H   D   .   F 
+                                          L   R   R   E   Y   E   L   M   I   D   F
+                                            *            *  *** **   *   *         
+
+>4213-32            #1420               TTC TTA ATA GTC TGA AAC ATC CAA GTC CGA GAT
+>PI105B             #1420               TTC TTA ATA GTC TGA AAC ATC CAA GTC CGA GAT
+                                        ...........................................
+ Complete coding Al.#1420               TTC TTA ATA GTC TGA AAC ATC CAA GTC CGA GAT
+                                        F   L   I   V   .   N   I   Q   V   R   D  
+                                         S   .   .   S   E   T   S   K   S   E   I 
+                                          L   N   S   L   K   H   P   S   P   R   .
+                                                                                   
+
+>4213-32            #1453               AG                                         
+>PI105B             #1453               AG                                         
+                                        ...........................................
+ Complete coding Al.#1453               AG                                         
+                                          
+                                          
+                                          
+                                          
+
